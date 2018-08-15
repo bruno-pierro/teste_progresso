@@ -32,7 +32,7 @@
          
          header("location: index.html");
       }else if($count == 1 and $active2 == 'professor'){
-        header("location: config.php"); 
+        header("location: professor.php"); 
       }
       else {
          $error = "Your Login Name or Password is invalid";
@@ -51,17 +51,17 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div style = "margin:30px">
-       
-       <form action = "" method = "post" style="width: 65%;" class="col-centered">
+    <div style = "margin:30px auto; width: 500px;" class="card">
+      <h3 class="col-centered" style="margin-top: 15px">Teste de progresso</h3>
+       <form action = "" method = "post" style="width: 65%;" class="col-centered card-body">
         <div class="form-group">
           <label for="username">Usuário: </label><input type = "text" name = "username" class = "form-control"/>
         </div>
         <div class="form-group">
           <label for="password">Senha  :</label><input type = "password" name = "password" class = "form-control" />
         </div>
-          <button type="submit" class="btn btn-secondary" onclick="gera()">Login</button><br />
-          <div style = "font-size:11px; color:#cc0000; margin-top:10px"><?php echo $error; ?></div>
+          <button type="submit" class="btn btn-secondary" onclick="$('.erro').show();">Login</button><br />
+          <div class="erro" style = "font-size:11px; color:#cc0000; margin-top:10px;display: none"><?php echo $error; ?></div>
        </form>
        
     </div>

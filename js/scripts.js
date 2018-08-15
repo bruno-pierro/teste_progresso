@@ -10,6 +10,7 @@ function checa(){
 	}else{
 		monta();
 	}
+	
 }
 
 function monta(){
