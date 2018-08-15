@@ -1,0 +1,10 @@
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
+.alert-dismissible .close {
+    position: relative !important;
+    top: -25px !important;
+    right: -25px !important;
+}
