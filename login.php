@@ -1,6 +1,7 @@
 <?php 
    include("config.php");
    session_start();
+    $_SESSION['login'] = time();
    
    if($_SERVER["REQUEST_METHOD"] == "POST") {
       // username and password sent from form 
@@ -60,8 +61,8 @@
         <div class="form-group">
           <label for="password">Senha  :</label><input type = "password" name = "password" class = "form-control" />
         </div>
-          <button type="submit" class="btn btn-secondary" onclick="$('.erro').show();">Login</button><br />
-          <div class="erro" style = "font-size:11px; color:#cc0000; margin-top:10px;display: none"><?php echo $error; ?></div>
+          <button type="submit" class="btn btn-secondary">Login</button><br />
+          <div class="erro" style = "font-size:11px; color:#cc0000; margin-top:10px;"><?php echo $error; ?></div>
        </form>
        
     </div>

@@ -1,0 +1,75 @@
+.main-head {
+	grid-area: header;
+}
+.content {
+	grid-area: content;
+}
+.main-nav {
+	grid-area: nav;
+	padding-top: 10px;
+	font-size: 1rem;
+    color: #212529;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: .25rem;
+}
+li{
+	padding: .25rem !important;
+}
+.side {
+	grid-area: sidebar;
+}
+.ad {
+	grid-area: ad;
+}
+.main-footer {
+	grid-area: footer;
+}
+.wrapper {
+	width: 800px;
+	margin-left: 10px;
+	display: grid;
+	grid-column-gap: 15px;
+	grid-row-gap: 15px;
+	grid-template-columns: 1fr 3fr;
+	grid-template-areas: 
+  "header header  header"
+  "nav    content content"
+  "nav    content content"
+  "footer footer  footer"
+}
+nav ul {
+ flex-direction: column;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+#img-upload{
+    width: 100%;
+    max-height: 20%;
+}
+
+#alt1,#alt2,#alt3,#alt4,#alt5{
+	width: 60%;
+}
