@@ -7,11 +7,11 @@ $alt2 = mysqli_real_escape_string($db,$_POST['alt2']);
 $alt3 = mysqli_real_escape_string($db,$_POST['alt3']); 
 $alt4 = mysqli_real_escape_string($db,$_POST['alt4']); 
 $alt5 = mysqli_real_escape_string($db,$_POST['alt5']); 
-
+$alt_correta = mysqli_real_escape_string($db,$_POST['questao_correta']);
 $imgConvertida = mysqli_real_escape_string($db,$_POST['imgConvertida']); 
 // $mypassword = mysqli_real_escape_string($db,$_POST['at5']); 
 
-$sql = "INSERT INTO table_questoes (questao,alt1,alt2,alt3,alt4,alt5,img) VALUES ('$questao','$alt1','$alt2','$alt3','$alt4','$alt5','$imgConvertida')";
+$sql = "INSERT INTO table_questoes (questao,alt1,alt2,alt3,alt4,alt5,alt_correta,img) VALUES ('$questao','$alt1','$alt2','$alt3','$alt4','$alt5','$alt_correta','$imgConvertida')";
 
 if ($db->query($sql) === TRUE) {
     echo "New record created successfully";
@@ -77,7 +77,7 @@ if ($db->query($sql) === TRUE) {
 					<input class="form-control" id="alt1" name="alt1"  rows="1" max="100"></input>
 					<div class="input-group-append">
 						<div class="input-group-text">
-							<input type="radio" aria-label="Radio button for following text input" name="questao_correta[1]">
+							<input type="radio" aria-label="Radio button for following text input" name="questao_correta" value="1">
 						</div>
 					</div>
 				</div>
@@ -86,7 +86,7 @@ if ($db->query($sql) === TRUE) {
 					<input class="form-control" id="alt2" name="alt2" rows="1" max="100"></input>
 					<div class="input-group-append">
 						<div class="input-group-text">
-							<input type="radio" aria-label="Radio button for following text input" name="questao_correta[2]">
+							<input type="radio" aria-label="Radio button for following text input" name="questao_correta" value="2">
 						</div>
 					</div>
 				</div>
@@ -95,7 +95,7 @@ if ($db->query($sql) === TRUE) {
 					<input class="form-control" id="alt3" name="alt3" rows="1" max="100"></input>
 					<div class="input-group-append">
 						<div class="input-group-text">
-							<input type="radio" aria-label="Radio button for following text input" name="questao_correta[3]">
+							<input type="radio" aria-label="Radio button for following text input" name="questao_correta" value="3">
 						</div>
 					</div>
 				</div>
@@ -104,7 +104,7 @@ if ($db->query($sql) === TRUE) {
 					<input class="form-control" id="alt4" name="alt4" rows="1" max="100"></input>
 					<div class="input-group-append">
 						<div class="input-group-text">
-							<input type="radio" aria-label="Radio button for following text input" name="questao_correta[4]">
+							<input type="radio" aria-label="Radio button for following text input" name="questao_correta" value="4">
 						</div>
 					</div>
 				</div>
@@ -113,7 +113,7 @@ if ($db->query($sql) === TRUE) {
 					<input class="form-control" id="alt5" name="alt5" rows="1" max="100"></input>
 					<div class="input-group-append">
 						<div class="input-group-text">
-							<input type="radio" aria-label="Radio button for following text input" name="questao_correta[5]">
+							<input type="radio" aria-label="Radio button for following text input" name="questao_correta" value="5">
 						</div>
 					</div>
 				</div>
