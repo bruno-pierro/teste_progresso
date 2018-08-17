@@ -91,3 +91,28 @@ function converte() {
 }
 
 document.getElementById("imgInp").addEventListener("change", converte);
+
+
+function edit() {
+      $.ajax({
+           method: "POST",
+           url: 'js/ajax.php',
+           data:{action:'chama'},
+           success:function(html) {
+             alert(html);
+           }
+
+      });
+ }
+
+function exclui() {
+      $.ajax({
+           method: "POST",
+           url: 'js/ajax.php',
+           data:{action:'exclui'},
+           success:function(html) {
+             alert(html);
+           }
+
+      });
+ }
