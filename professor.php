@@ -1,6 +1,8 @@
 <?php 
-include("config_questoes.php");
 
+
+include("config_questoes.php");
+if($_SERVER["REQUEST_METHOD"] == "POST") {
 $questao = mysqli_real_escape_string($db,$_POST['pergunta']);
 $alt1 = mysqli_real_escape_string($db,$_POST['alt1']); 
 $alt2 = mysqli_real_escape_string($db,$_POST['alt2']); 
@@ -13,16 +15,11 @@ $imgConvertida = mysqli_real_escape_string($db,$_POST['imgConvertida']);
 
 $sql = "INSERT INTO table_questoes (questao,alt1,alt2,alt3,alt4,alt5,alt_correta,img) VALUES ('$questao','$alt1','$alt2','$alt3','$alt4','$alt5','$alt_correta','$imgConvertida')";
 
-if ($db->query($sql) === TRUE) {
-    echo "New record created successfully";
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-}
 
+}
 
 // $result = mysqli_query($db,$sql);
 // $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -39,14 +36,14 @@ if ($db->query($sql) === TRUE) {
 		<header class="main-head">The header</header>
 		<nav class="main-nav">
 			<ul>
-				<li class="dropdown-item"><a href="">Inserir Questões</a></li>
-				<li class="dropdown-item"><a href="">Consultar Questões</a></li>
+				<li class="dropdown-item"><a href="professor.php">Inserir Questões</a></li>
+				<li class="dropdown-item"><a href="consulta_questoes.php">Consultar Questões</a></li>
 				<li class="dropdown-item"><a href="">Admin</a></li>
 			</ul>
 		</nav>
 		<article class="content">
 			<h1>Inserir Questão</h1>
-			<form action = "" method = "post">
+			<form action = "professor.php" method = "POST">
 				<div class="form-group">
 					<label for="pergunta">Digite a questão: </label>
 					<textarea class="form-control" id="pergunta" name="pergunta" rows="3" style="resize: none;"></textarea>
@@ -81,6 +78,7 @@ if ($db->query($sql) === TRUE) {
 						</div>
 					</div>
 				</div>
+
 				<label for="alt2">Alternativa 2: </label>
 				<div class="form-group input-group">
 					<input class="form-control" id="alt2" name="alt2" rows="1" max="100"></input>
@@ -90,6 +88,7 @@ if ($db->query($sql) === TRUE) {
 						</div>
 					</div>
 				</div>
+
 				<label for="alt3">Alternativa 3: </label>
 				<div class="form-group input-group">
 					<input class="form-control" id="alt3" name="alt3" rows="1" max="100"></input>
@@ -99,6 +98,7 @@ if ($db->query($sql) === TRUE) {
 						</div>
 					</div>
 				</div>
+
 				<label for="alt4">Alternativa 4: </label>
 				<div class="form-group input-group">
 					<input class="form-control" id="alt4" name="alt4" rows="1" max="100"></input>
@@ -108,6 +108,7 @@ if ($db->query($sql) === TRUE) {
 						</div>
 					</div>
 				</div>
+
 				<label for="alt5">Alternativa 5: </label>
 				<div class="form-group input-group">
 					<input class="form-control" id="alt5" name="alt5" rows="1" max="100"></input>
@@ -117,7 +118,17 @@ if ($db->query($sql) === TRUE) {
 						</div>
 					</div>
 				</div>
+
 				<button type="submit" class="btn btn-success">Inserir</button><br />
+				<?php 
+				if($_SERVER["REQUEST_METHOD"] == "POST") {
+					if ($db->query($sql) === TRUE) {
+					    echo "New record created successfully";
+					} else {
+					    echo "Error: " . $sql . "<br>" . $conn->error;
+					}
+				}
+				?>
 			</form>
 		</article> 
 		<footer class="main-footer">The footer</footer>
