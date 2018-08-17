@@ -116,3 +116,7 @@ function exclui() {
 
       });
  }
+
+function img(id){
+	console.log("teste");
+}
