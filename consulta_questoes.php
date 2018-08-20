@@ -36,27 +36,54 @@
 					</tr>
 				</thead>
 				<tbody>
-				<?php 
-				include("config_questoes.php");
-				$query="SELECT questao, alt1,alt2,alt3,alt4,alt5,alt_correta,id, img FROM table_questoes ";
-				$results = mysqli_query($db,$query);
-				$row2 = mysqli_fetch_array($results);
+					<?php 
+					include("config_questoes.php");
+					$query="SELECT questao, alt1,alt2,alt3,alt4,alt5,alt_correta,id, img FROM table_questoes";
+					$results = mysqli_query($db,$query);
+					$row2 = mysqli_fetch_array($results);
+					$src = array();
 
-				while ($row = mysqli_fetch_array($results)) {
+					while ($row = mysqli_fetch_array($results)) {
+					$src[$row['id']] = $row['img'];
+					// echo $src17;
 
-				$certo = $row['alt_correta'];
-				echo "<tr><td>" . $row['questao'] . "</td><td>" . $row['alt1'] ."</td><td>".$row['alt2']."</td><td>".$row['alt3']."</td><td>".$row['alt4']."</td><td>".$row['alt5']."</td><td>".$row['alt'.$certo.'']. "</td><td><img style='width:50px; height:50px;' onclick='img(this.id);' id='img".$row['id']."'src='".$row['img']."'></td><td><a href='' onclick='edit();'><i class='far fa-edit'></a></i><a href='' onclick='exclui();'><i class='fas fa-times'></i></a></td></tr>";
+						$certo = $row['alt_correta'];
+						echo "<tr id='".$row['id']."'><td>" . $row['questao'] . "</td><td>" . $row['alt1'] ."</td><td>".$row['alt2']."</td><td>".$row['alt3']."</td><td>".$row['alt4']."</td><td>".$row['alt5']."</td><td>".$row['alt'.$certo.'']. "</td><td><img style='width:50px; height:50px;' onclick='img(this.id);' data-toggle='modal' data-target='#exampleModal' id='img".$row['id']."' class='imagemModal' src='".$row['img']."'></td><td><a id='".$row['id']."' href='' onclick='edit(this.id);'><i class='far fa-edit'></a></i><a href='' id='".$row['id']."' onclick='exclui(this.id);'><i class='fas fa-times'></i></a></td></tr>";
 
-				}
+					}
 
-				?>
+					//echo $src[0].'<br><br>';
+					?>
 				</tbody>
 			</table>
-			</form>
-		</article> 
-		<footer class="main-footer">The footer</footer>
-	</div>
-	<script type="text/javascript" src=js/scripts.js></script>
+			<!-- Button trigger modal -->
+
+			<!-- Modal -->
+			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Visualização</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+
+						<div class="modal-body modalzin">
+										
+								<!-- monta o modalzinho -->
+
+						</div>
+						<div class="modal-footer">
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</article> 
+	<footer class="main-footer">The footer</footer>
+</div>
+<script type="text/javascript" src=js/scripts.js></script>
 </body>
 </html>
 

@@ -93,11 +93,25 @@ function converte() {
 document.getElementById("imgInp").addEventListener("change", converte);
 
 
-function edit() {
+function edit(id) {
+	var edit_id = id;
       $.ajax({
            method: "POST",
-           url: 'js/ajax.php',
-           data:{action:'chama'},
+           url: 'edit.php',
+           data:{'edit_id':'edit_id'},
+           success:function(html) {
+             location.href="edit.php?teste="+edit_id+"";
+           }
+
+      });
+ }
+
+function editar(id) {
+	var del_id = id;
+      $.ajax({
+           method: "POST",
+           url: 'delete.php',
+           data:{'del_id':del_id},
            success:function(html) {
              alert(html);
            }
@@ -105,18 +119,26 @@ function edit() {
       });
  }
 
-function exclui() {
+function exclui(id) {
+	var del_id = id;
       $.ajax({
            method: "POST",
-           url: 'js/ajax.php',
-           data:{action:'exclui'},
+           url: 'delete.php',
+           data:{'del_id':del_id},
            success:function(html) {
              alert(html);
            }
 
       });
  }
+
 
 function img(id){
-	console.log("teste");
+
+	var imagens = id;
+	var montagem =  $('#'+imagens).attr('src');
+	$('.modalzin').html('<img src='+montagem+' style="width:100%; height:100%">');
+
 }
+
+
