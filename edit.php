@@ -16,12 +16,12 @@ $alt4 = mysqli_real_escape_string($db,$_POST['alt4']);
 $alt5 = mysqli_real_escape_string($db,$_POST['alt5']); 
 $alt_correta = mysqli_real_escape_string($db,$_POST['questao_correta']);
 $imgConvertida = mysqli_real_escape_string($db,$_POST['imgConvertida']); 
-$edit_id = mysqli_real_escape_string($db,$_POST['id']); 
+// $edit_id = mysqli_real_escape_string($db,$_POST['id']); 
 // $mypassword = mysqli_real_escape_string($db,$_POST['at5']); 
 echo $edit_id;
-// $sql = "UPDATE table_questoes SET questao='$questao',alt1='$alt1', alt2='$alt2', alt3 = '$alt3', alt4='$alt4',alt5='$alt5', alt_correta='$alt_correta', img='$imgConvertida' where id='$edit_id'";
-$sql = "INSERT INTO table_questoes (questao,alt1,alt2,alt3,alt4,alt5,alt_correta,img) VALUES ('$questao','$alt1','$alt2','$alt3','$alt4','$alt5','$alt_correta','$imgConvertida') where id = '$edit_id'";
-
+ $sql = " UPDATE table_questoes SET questao='$questao',alt1='$alt1', alt2='$alt2', alt3 = '$alt3', alt4='$alt4',alt5='$alt5', alt_correta='$alt_correta', img='$imgConvertida' where id='$edit_id'";
+// $sql = "INSERT INTO table_questoes (questao,alt1,alt2,alt3,alt4,alt5,alt_correta,img) VALUES ('$questao','$alt1','$alt2','$alt3','$alt4','$alt5','$alt_correta','$imgConvertida') where table_questoes.id = '$edit_id'";
+echo $sql;
 
 }
 ?>
@@ -48,7 +48,7 @@ $sql = "INSERT INTO table_questoes (questao,alt1,alt2,alt3,alt4,alt5,alt_correta
 		</nav>
 		<article class="content">
 			<h1>Editar Questão</h1>
-			<form action = "professor.php" method = "POST">
+			<form action = "" method = "POST">
 				<div class="form-group">
 					<label for="pergunta">Digite a questão: </label>
 					<textarea class="form-control" id="pergunta" name="pergunta" rows="3" style="resize: none;" ><?php echo htmlspecialchars($row['questao']); ?></textarea>
@@ -125,15 +125,7 @@ $sql = "INSERT INTO table_questoes (questao,alt1,alt2,alt3,alt4,alt5,alt_correta
 				</div>
 
 				<button type="submit" class="btn btn-success">Editar</button><br />
-				<?php 
-				if($_SERVER["REQUEST_METHOD"] == "POST") {
-					if ($db->query($sql) === TRUE) {
-						echo "New record created successfully";
-					} else {
-						echo "Error: " . $sql . "<br>" . $conn->error;
-					}
-				}
-				?>
+				
 			</form>
 		</article> 
 		<footer class="main-footer">The footer</footer>

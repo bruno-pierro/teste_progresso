@@ -11,7 +11,6 @@ $alt4 = mysqli_real_escape_string($db,$_POST['alt4']);
 $alt5 = mysqli_real_escape_string($db,$_POST['alt5']); 
 $alt_correta = mysqli_real_escape_string($db,$_POST['questao_correta']);
 $imgConvertida = mysqli_real_escape_string($db,$_POST['imgConvertida']); 
-// $mypassword = mysqli_real_escape_string($db,$_POST['at5']); 
 
 $sql = "INSERT INTO table_questoes (questao,alt1,alt2,alt3,alt4,alt5,alt_correta,img) VALUES ('$questao','$alt1','$alt2','$alt3','$alt4','$alt5','$alt_correta','$imgConvertida')";
 
