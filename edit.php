@@ -3,11 +3,16 @@
 $edit_id = $_GET['teste'];
 
 include("config_questoes.php");
-$query='SELECT questao, alt1,alt2,alt3,alt4,alt5,alt_correta,id, img FROM table_questoes where id ='.$edit_id.'';
+$query="SELECT questao, alt1,alt2,alt3,alt4,alt5,alt_correta,id, img FROM table_questoes where id ='$edit_id'";
 $results = mysqli_query($db,$query);
 $row = mysqli_fetch_array($results);
 
+
 if($_SERVER["REQUEST_METHOD"] == "POST") {
+
+
+
+$id_edicao = mysqli_real_escape_string($db,$_POST['id_edicao']);
 $questao = mysqli_real_escape_string($db,$_POST['pergunta']);
 $alt1 = mysqli_real_escape_string($db,$_POST['alt1']); 
 $alt2 = mysqli_real_escape_string($db,$_POST['alt2']); 
@@ -16,12 +21,15 @@ $alt4 = mysqli_real_escape_string($db,$_POST['alt4']);
 $alt5 = mysqli_real_escape_string($db,$_POST['alt5']); 
 $alt_correta = mysqli_real_escape_string($db,$_POST['questao_correta']);
 $imgConvertida = mysqli_real_escape_string($db,$_POST['imgConvertida']); 
-// $edit_id = mysqli_real_escape_string($db,$_POST['id']); 
+ 
 // $mypassword = mysqli_real_escape_string($db,$_POST['at5']); 
-echo $edit_id;
- $sql = " UPDATE table_questoes SET questao='$questao',alt1='$alt1', alt2='$alt2', alt3 = '$alt3', alt4='$alt4',alt5='$alt5', alt_correta='$alt_correta', img='$imgConvertida' where id='$edit_id'";
-// $sql = "INSERT INTO table_questoes (questao,alt1,alt2,alt3,alt4,alt5,alt_correta,img) VALUES ('$questao','$alt1','$alt2','$alt3','$alt4','$alt5','$alt_correta','$imgConvertida') where table_questoes.id = '$edit_id'";
-echo $sql;
+ $sql = " UPDATE table_questoes SET questao='$questao',alt1='$alt1', alt2='$alt2', alt3 = '$alt3', alt4='$alt4',alt5='$alt5', alt_correta='$alt_correta', img='$imgConvertida' where id='$id_edicao'";
+ $results = mysqli_query($db,$sql);
+//$row = mysqli_fetch_array($results);
+
+// $sql = 'INSERT INTO table_questoes (questao,alt1,alt2,alt3,alt4,alt5,alt_correta,img) VALUES ('.$questao.','.$alt1.','.$alt2.','.$alt3.','.$alt4.','.$alt5.','.$alt_correta.','.$imgConvertida.') where id = '.$edit_id2.'';
+//echo $edit_id;
+//echo $sql;
 
 }
 ?>
@@ -48,9 +56,10 @@ echo $sql;
 		</nav>
 		<article class="content">
 			<h1>Editar Questão</h1>
-			<form action = "" method = "POST">
+			<form action = "edit.php?teste=<?php echo htmlspecialchars($row['id']); ?>" method = "POST">
 				<div class="form-group">
 					<label for="pergunta">Digite a questão: </label>
+					<input type="" name="id_edicao" style="display: none" value="<?php echo htmlspecialchars($row['id']); ?>">
 					<textarea class="form-control" id="pergunta" name="pergunta" rows="3" style="resize: none;" ><?php echo htmlspecialchars($row['questao']); ?></textarea>
 				</div>
 				<div class="form-group">
