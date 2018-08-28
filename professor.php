@@ -30,25 +30,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	<link rel="stylesheet" type="text/css" href="css/professor.css">
 	<title></title>
 </head>
-<body style="    background-color: #eaedf2;">
-	<div class="col-md-12" style="width:100%;margin-top:15px;">
-		<div class="box-body" style="display: block;">
-		</div>
-		<table style="width: 100%;">
-			<tbody><tr>
-				<td style="width: 40%;">
-					<img src="img/LOGO-ANHEMBI-MORUMBI-MAIOR-300x128.png" height="50px;" width="120px;">
-				</td>
-				<td style="width: 50%;">
-					<h1 class="box-title">Adicionar questões</h1>
-					<div class="box-tools pull-right">
-					</div></td>
-					<td style="width: 10%;">
-						<img src="img/Laureate_International_Universities_Logo.png" height="40px;" width="150px;">
-					</td>
-				</tr>
-			</tbody></table>
-		</div>
+<body >
+
+		<?php include ("header.php") ?>
+
 		<div class="wrapper">
 			<header class="main-head">
 			</header>
@@ -56,11 +41,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 				<ul>
 					<li class="dropdown-item"><a href="professor.php">Inserir Questões</a></li>
 					<li class="dropdown-item"><a href="consulta_questoes.php">Consultar Questões</a></li>
-					<li class="dropdown-item"><a href="">Admin</a></li>
+					<li class="dropdown-item"><a href="admin.php">Admin</a></li>
 				</ul>
 			</nav>
 			<article class="content">
-				<!-- <h1>Inserir Questão</h1> -->
+				<h1>Inserir Questão</h1>
 				<form action = "professor.php" method = "POST">
 					<div class="form-group">
 						<label for="pergunta"><h5>Digite a questão:</h5> </label>
@@ -151,17 +136,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 			</article> 
 			<footer class="main-footer"></footer>
 		</div>
-		<div class="m-all t-all d-all bot-footer cf">
-			<div class="wrap cf">
-				<div class="m-1of2 t-1of2 d-1of2">
-					<p class="source-org copyright">Copyright © 2018 Universidade Anhembi Morumbi.</div>
-						<div class="m-1of2 t-1of2 d-1of2">
-							<div class="logo-footer-laureate">
-								<a href="http://www.laureate.net/" target="_blank"><img src="http://portal.anhembi.br/wp-content/themes/anhembi/library/images/logo-laureate.png" width="235px" height="66px" alt="Laureate - International Universities" title="Laureate - International Universities"></a>
-							</div>
-						</div>
-					</div>
-				</div>
+		<?php include ("footer.php") ?>
 				<script type="text/javascript" src=js/scripts.js></script>
 			</body>
 			</html>

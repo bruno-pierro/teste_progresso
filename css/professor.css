@@ -3,7 +3,7 @@ body{
 }
 a{
         color: #00796a;
-    
+
 }
 .main-head {
 	grid-area: header;
@@ -22,7 +22,7 @@ a{
     background-clip: padding-box;
     border: 1px solid #00AD8E;
     border-radius: .25rem;
-        background-color: #f3f3f7;
+        background-color: #f9f9f9;
 }
 li{
 	padding: .25rem !important;
@@ -75,7 +75,7 @@ nav ul {
 }
 
 #img-upload{
-    width: 100%;
+    width: 50%;
     max-height: 20%;
 }
 
@@ -86,7 +86,7 @@ nav ul {
 .bot-footer {
     background-color: #00796a;
     color: #fff;
-    padding: 35px 0 70px 0;
+    padding: 35px 0 95px 0;
 }
 
 .footer .bot-footer .source-org {
@@ -107,4 +107,8 @@ nav ul {
     float: left;
     padding-right: .75em;
     width: 50%;
+}
+
+.form-control[readonly] {
+    background-color: #f9f9f9;
 }
