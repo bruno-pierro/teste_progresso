@@ -1,13 +1,7 @@
 <?php 
 
-$edit_id = $_GET['teste'];
 
 include("config_questoes.php");
-$query="SELECT questao, alt1,alt2,alt3,alt4,alt5,alt_correta,id, img FROM table_questoes where id ='$edit_id'";
-$results = mysqli_query($db,$query);
-$row = mysqli_fetch_array($results);
-
-
 if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
@@ -22,16 +16,17 @@ $alt5 = mysqli_real_escape_string($db,$_POST['alt5']);
 $alt_correta = mysqli_real_escape_string($db,$_POST['questao_correta']);
 $imgConvertida = mysqli_real_escape_string($db,$_POST['imgConvertida']); 
  
-// $mypassword = mysqli_real_escape_string($db,$_POST['at5']); 
  $sql = " UPDATE table_questoes SET questao='$questao',alt1='$alt1', alt2='$alt2', alt3 = '$alt3', alt4='$alt4',alt5='$alt5', alt_correta='$alt_correta', img='$imgConvertida' where id='$id_edicao'";
  $results = mysqli_query($db,$sql);
-//$row = mysqli_fetch_array($results);
 
-// $sql = 'INSERT INTO table_questoes (questao,alt1,alt2,alt3,alt4,alt5,alt_correta,img) VALUES ('.$questao.','.$alt1.','.$alt2.','.$alt3.','.$alt4.','.$alt5.','.$alt_correta.','.$imgConvertida.') where id = '.$edit_id2.'';
-//echo $edit_id;
-//echo $sql;
 
 }
+$edit_id = $_GET['teste'];
+$query="SELECT questao, alt1,alt2,alt3,alt4,alt5,alt_correta,id, img FROM table_questoes where id ='$edit_id'";
+$results = mysqli_query($db,$query);
+$row = mysqli_fetch_array($results);
+
+
 ?>
 
 <!DOCTYPE html>

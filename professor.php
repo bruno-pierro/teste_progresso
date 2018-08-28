@@ -3,16 +3,16 @@
 
 include("config_questoes.php");
 if($_SERVER["REQUEST_METHOD"] == "POST") {
-$questao = mysqli_real_escape_string($db,$_POST['pergunta']);
-$alt1 = mysqli_real_escape_string($db,$_POST['alt1']); 
-$alt2 = mysqli_real_escape_string($db,$_POST['alt2']); 
-$alt3 = mysqli_real_escape_string($db,$_POST['alt3']); 
-$alt4 = mysqli_real_escape_string($db,$_POST['alt4']); 
-$alt5 = mysqli_real_escape_string($db,$_POST['alt5']); 
-$alt_correta = mysqli_real_escape_string($db,$_POST['questao_correta']);
-$imgConvertida = mysqli_real_escape_string($db,$_POST['imgConvertida']); 
+	$questao = mysqli_real_escape_string($db,$_POST['pergunta']);
+	$alt1 = mysqli_real_escape_string($db,$_POST['alt1']); 
+	$alt2 = mysqli_real_escape_string($db,$_POST['alt2']); 
+	$alt3 = mysqli_real_escape_string($db,$_POST['alt3']); 
+	$alt4 = mysqli_real_escape_string($db,$_POST['alt4']); 
+	$alt5 = mysqli_real_escape_string($db,$_POST['alt5']); 
+	$alt_correta = mysqli_real_escape_string($db,$_POST['questao_correta']);
+	$imgConvertida = mysqli_real_escape_string($db,$_POST['imgConvertida']); 
 
-$sql = "INSERT INTO table_questoes (questao,alt1,alt2,alt3,alt4,alt5,alt_correta,img) VALUES ('$questao','$alt1','$alt2','$alt3','$alt4','$alt5','$alt_correta','$imgConvertida')";
+	$sql = "INSERT INTO table_questoes (questao,alt1,alt2,alt3,alt4,alt5,alt_correta,img) VALUES ('$questao','$alt1','$alt2','$alt3','$alt4','$alt5','$alt_correta','$imgConvertida')";
 
 
 }
@@ -30,108 +30,138 @@ $sql = "INSERT INTO table_questoes (questao,alt1,alt2,alt3,alt4,alt5,alt_correta
 	<link rel="stylesheet" type="text/css" href="css/professor.css">
 	<title></title>
 </head>
-<body>
-	<div class="wrapper">
-		<header class="main-head">The header</header>
-		<nav class="main-nav">
-			<ul>
-				<li class="dropdown-item"><a href="professor.php">Inserir Questões</a></li>
-				<li class="dropdown-item"><a href="consulta_questoes.php">Consultar Questões</a></li>
-				<li class="dropdown-item"><a href="">Admin</a></li>
-			</ul>
-		</nav>
-		<article class="content">
-			<h1>Inserir Questão</h1>
-			<form action = "professor.php" method = "POST">
-				<div class="form-group">
-					<label for="pergunta">Digite a questão: </label>
-					<textarea class="form-control" id="pergunta" name="pergunta" rows="3" style="resize: none;"></textarea>
-				</div>
-				<div class="form-group">
-					<label>Suba uma imagem que ilustre a questão (opcional):</label>
-					<div class="input-group">
-						<span class="input-group-btn btn-secondary">
-							<span class="btn btn-default btn-file">
-								Browse… <input type="file"  id="imgInp">
+<body style="    background-color: #eaedf2;">
+	<div class="col-md-12" style="width:100%;margin-top:15px;">
+		<div class="box-body" style="display: block;">
+		</div>
+		<table style="width: 100%;">
+			<tbody><tr>
+				<td style="width: 40%;">
+					<img src="img/LOGO-ANHEMBI-MORUMBI-MAIOR-300x128.png" height="50px;" width="120px;">
+				</td>
+				<td style="width: 50%;">
+					<h1 class="box-title">Adicionar questões</h1>
+					<div class="box-tools pull-right">
+					</div></td>
+					<td style="width: 10%;">
+						<img src="img/Laureate_International_Universities_Logo.png" height="40px;" width="150px;">
+					</td>
+				</tr>
+			</tbody></table>
+		</div>
+		<div class="wrapper">
+			<header class="main-head">
+			</header>
+			<nav class="main-nav">
+				<ul>
+					<li class="dropdown-item"><a href="professor.php">Inserir Questões</a></li>
+					<li class="dropdown-item"><a href="consulta_questoes.php">Consultar Questões</a></li>
+					<li class="dropdown-item"><a href="">Admin</a></li>
+				</ul>
+			</nav>
+			<article class="content">
+				<!-- <h1>Inserir Questão</h1> -->
+				<form action = "professor.php" method = "POST">
+					<div class="form-group">
+						<label for="pergunta"><h5>Digite a questão:</h5> </label>
+						<textarea class="form-control" id="pergunta" name="pergunta" rows="3" style="resize: none;"></textarea>
+					</div>
+					<div class="form-group">
+						<label><h5>Suba uma imagem que ilustre a questão (opcional):</h5></label>
+						<div class="input-group">
+							<span class="input-group-btn btn-secondary" style="    border-radius: .25em;">
+								<span class="btn btn-default btn-file">
+									Browse… <input type="file"  id="imgInp">
+								</span>
 							</span>
-						</span>
-						<input type="text" class="form-control" readonly>
+							<input type="text" class="form-control" readonly>
+						</div>
+						<img id='img-upload'/>
+						<input  style="display: none" id="base64" name="imgConvertida"></input>
 					</div>
-					<img id='img-upload'/>
-					<input  style="display: none" id="base64" name="imgConvertida"></input>
-				</div>
 
-				<div class="alert alert-primary alert-dismissible fade show" role="alert">
-					Ao inserir todas as questões, cheque qual delas é a correta usando o círculo do lado direito do campo.
-					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
+					<div class="alert alert-info alert-dismissible fade show" role="alert">
+						Ao inserir todas as questões, cheque qual delas é a correta usando o círculo do lado direito do campo.
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
 
-				<label for="alt1">Alternativa 1: </label>
-				<div class="form-group input-group">
-					<input class="form-control" id="alt1" name="alt1"  rows="1" max="100"></input>
-					<div class="input-group-append">
-						<div class="input-group-text">
-							<input type="radio" aria-label="Radio button for following text input" name="questao_correta" value="1">
+					<label for="alt1"><h5>Alternativa 1:</h5> </label>
+					<div class="form-group input-group">
+						<input class="form-control" id="alt1" name="alt1"  rows="1" max="100"></input>
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<input type="radio" aria-label="Radio button for following text input" name="questao_correta" value="1">
+							</div>
 						</div>
 					</div>
-				</div>
 
-				<label for="alt2">Alternativa 2: </label>
-				<div class="form-group input-group">
-					<input class="form-control" id="alt2" name="alt2" rows="1" max="100"></input>
-					<div class="input-group-append">
-						<div class="input-group-text">
-							<input type="radio" aria-label="Radio button for following text input" name="questao_correta" value="2">
+					<label for="alt2"><h5>Alternativa 2:</h5> </label>
+					<div class="form-group input-group">
+						<input class="form-control" id="alt2" name="alt2" rows="1" max="100"></input>
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<input type="radio" aria-label="Radio button for following text input" name="questao_correta" value="2">
+							</div>
 						</div>
 					</div>
-				</div>
 
-				<label for="alt3">Alternativa 3: </label>
-				<div class="form-group input-group">
-					<input class="form-control" id="alt3" name="alt3" rows="1" max="100"></input>
-					<div class="input-group-append">
-						<div class="input-group-text">
-							<input type="radio" aria-label="Radio button for following text input" name="questao_correta" value="3">
+					<label for="alt3"><h5>Alternativa 3:</h5> </label>
+					<div class="form-group input-group">
+						<input class="form-control" id="alt3" name="alt3" rows="1" max="100"></input>
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<input type="radio" aria-label="Radio button for following text input" name="questao_correta" value="3">
+							</div>
 						</div>
 					</div>
-				</div>
 
-				<label for="alt4">Alternativa 4: </label>
-				<div class="form-group input-group">
-					<input class="form-control" id="alt4" name="alt4" rows="1" max="100"></input>
-					<div class="input-group-append">
-						<div class="input-group-text">
-							<input type="radio" aria-label="Radio button for following text input" name="questao_correta" value="4">
+					<label for="alt4"><h5>Alternativa 4:</h5> </label>
+					<div class="form-group input-group">
+						<input class="form-control" id="alt4" name="alt4" rows="1" max="100"></input>
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<input type="radio" aria-label="Radio button for following text input" name="questao_correta" value="4">
+							</div>
 						</div>
 					</div>
-				</div>
 
-				<label for="alt5">Alternativa 5: </label>
-				<div class="form-group input-group">
-					<input class="form-control" id="alt5" name="alt5" rows="1" max="100"></input>
-					<div class="input-group-append">
-						<div class="input-group-text">
-							<input type="radio" aria-label="Radio button for following text input" name="questao_correta" value="5">
+					<label for="alt5"><h5>Alternativa 5:</h5> </label>
+					<div class="form-group input-group">
+						<input class="form-control" id="alt5" name="alt5" rows="1" max="100"></input>
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<input type="radio" aria-label="Radio button for following text input" name="questao_correta" value="5">
+							</div>
 						</div>
 					</div>
-				</div>
 
-				<button type="submit" class="btn btn-success">Inserir</button><br />
-				<?php 
-				if($_SERVER["REQUEST_METHOD"] == "POST") {
-					if ($db->query($sql) === TRUE) {
-					    echo "New record created successfully";
-					} else {
-					    echo "Error: " . $sql . "<br>" . $conn->error;
+					<button type="submit" class="btn btn-success">Inserir</button><br />
+					<?php 
+					if($_SERVER["REQUEST_METHOD"] == "POST") {
+						if ($db->query($sql) === TRUE) {
+							echo "New record created successfully";
+						} else {
+							echo "Error: " . $sql . "<br>" . $conn->error;
+						}
 					}
-				}
-				?>
-			</form>
-		</article> 
-		<footer class="main-footer">The footer</footer>
-	</div>
-	<script type="text/javascript" src=js/scripts.js></script>
-</body>
-</html>
+					?>
+				</form>
+			</article> 
+			<footer class="main-footer"></footer>
+		</div>
+		<div class="m-all t-all d-all bot-footer cf">
+			<div class="wrap cf">
+				<div class="m-1of2 t-1of2 d-1of2">
+					<p class="source-org copyright">Copyright © 2018 Universidade Anhembi Morumbi.</div>
+						<div class="m-1of2 t-1of2 d-1of2">
+							<div class="logo-footer-laureate">
+								<a href="http://www.laureate.net/" target="_blank"><img src="http://portal.anhembi.br/wp-content/themes/anhembi/library/images/logo-laureate.png" width="235px" height="66px" alt="Laureate - International Universities" title="Laureate - International Universities"></a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<script type="text/javascript" src=js/scripts.js></script>
+			</body>
+			</html>

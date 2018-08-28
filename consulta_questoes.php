@@ -40,12 +40,8 @@
 					include("config_questoes.php");
 					$query="SELECT questao, alt1,alt2,alt3,alt4,alt5,alt_correta,id, img FROM table_questoes";
 					$results = mysqli_query($db,$query);
-					$row2 = mysqli_fetch_array($results);
-					$src = array();
 
 					while ($row = mysqli_fetch_array($results)) {
-					$src[$row['id']] = $row['img'];
-					// echo $src17;
 
 						$certo = $row['alt_correta'];
 						echo "<tr id='".$row['id']."'><td>" . $row['questao'] . "</td><td>" . $row['alt1'] ."</td><td>".$row['alt2']."</td><td>".$row['alt3']."</td><td>".$row['alt4']."</td><td>".$row['alt5']."</td><td>".$row['alt'.$certo.'']. "</td><td><img style='width:50px; height:50px;' onclick='img(this.id);' data-toggle='modal' data-target='#exampleModal' id='img".$row['id']."' class='imagemModal' src='".$row['img']."'></td><td><a id='".$row['id']."' href='' onclick='edit(this.id);'><i class='far fa-edit'></a></i><a href='' id='".$row['id']."' onclick='exclui(this.id);'><i class='fas fa-times'></i></a></td></tr>";

@@ -29,10 +29,7 @@ function monta(){
 
 	};
 
-
-
 }
-
 //script que monta o preview da imagem 
 
 $(document).ready( function() {
