@@ -112,3 +112,12 @@ nav ul {
 .form-control[readonly] {
     background-color: #f9f9f9;
 }
+.legenda{
+    width: 16em;
+    margin-left: 15px;
+    padding-left: 2px;
+
+}
+.radio{
+    margin-left: 15px;
+}
