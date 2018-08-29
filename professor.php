@@ -2,7 +2,8 @@
 
 
 include("config_questoes.php");
-if($_SERVER["REQUEST_METHOD"] == "POST") {
+
+if(!empty($_POST['insert_alternativa'])) {
 	$questao = mysqli_real_escape_string($db,$_POST['pergunta']);
 	$alt1 = mysqli_real_escape_string($db,$_POST['alt1']); 
 	$alt2 = mysqli_real_escape_string($db,$_POST['alt2']); 
@@ -17,9 +18,23 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 }
+if (!empty($_POST['insert_dissertativa'])) {
+	$questao = mysqli_real_escape_string($db,$_POST['pergunta']);
+	$dificuldade_questao = mysqli_real_escape_string($db,$_POST['dificuldade']);
+	$imgConvertida = mysqli_real_escape_string($db,$_POST['imgConvertida']);
 
-// $result = mysqli_query($db,$sql);
-// $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+	$sql = "INSERT INTO table_questoes (questao,dificuldade,alt1,alt2,alt3,alt4,alt5,alt_correta,img) VALUES ('$questao','$dificuldade_questao','-','-','-','-','-','-','$imgConvertida')";
+}
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+	if ($db->query($sql) === TRUE) {
+		echo "<script type='javascript'>alert('Email enviado com Sucesso!');";
+		echo "javascript:window.location='professor.php';</script>";
+	} else {
+		echo "Error: " . $sql . "<br>" . $conn->error;
+	}
+}
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -38,7 +53,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 				$('#seletor_tipo').css("display","none");
 				$('#alternativa').css("display","block");
 				$('#dissertativa').css("display","none");
-			}else{
+			}else if ($('#q_dis').prop("checked")){
 				$('#seletor_tipo').css("display","none");
 				$('#alternativa').css("display","none");
 				$('#dissertativa').css("display","block");
@@ -182,16 +197,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 					</div>
 				</div>
 
-				<button type="submit" class="btn btn-success">Inserir</button><br />
+				<button type="submit" name="insert_alternativa" value="Inserir Alternativa" class="btn btn-success">Inserir</button><br />
 				<?php 
-				if($_SERVER["REQUEST_METHOD"] == "POST") {
-					if ($db->query($sql) === TRUE) {
-						echo "<script type='javascript'>alert('Email enviado com Sucesso!');";
-						echo "javascript:window.location='professor.php';</script>";
-					} else {
-						echo "Error: " . $sql . "<br>" . $conn->error;
-					}
-				}
+				// if($_SERVER["REQUEST_METHOD"] == "POST") {
+				// 	if ($db->query($sql) === TRUE) {
+				// 		echo "<script type='javascript'>alert('Email enviado com Sucesso!');";
+				// 		echo "javascript:window.location='professor.php';</script>";
+				// 	} else {
+				// 		echo "Error: " . $sql . "<br>" . $conn->error;
+				// 	}
+				// }
 				?>
 			</form>
 		</article> 
@@ -239,17 +254,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 						</div>
 					</fieldset>
 				</div>
-				<button type="submit" class="btn btn-success">Inserir</button><br />
+				<button type="submit" name="insert_dissertativa" value="Inserir Dissertativa" class="btn btn-success">Inserir</button><br />
 				<?php 
-				if($_SERVER["REQUEST_METHOD"] == "POST") {
-					if ($db->query($sql) === TRUE) {
-						echo "<script type='javascript'>alert('Email enviado com Sucesso!');";
-						echo "javascript:window.location='professor.php';</script>";
-					} else {
-						echo "Error: " . $sql . "<br>" . $conn->error;
-					}
-				}
-				?>
+				// if($_SERVER["REQUEST_METHOD"] == "POST") {
+				// 	if ($db->query($sql) === TRUE) {
+				// 		echo "<script type='javascript'>alert('Email enviado com Sucesso!');";
+				// 		echo "javascript:window.location='professor.php';</script>";
+				// 	} else {
+				// 		echo "Error: " . $sql . "<br>" . $conn->error;
+				// 	}
+				// }
+				?>	
 			</form>
 		</article>
 		<footer class="main-footer"></footer>
