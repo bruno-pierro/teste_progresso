@@ -25,14 +25,14 @@ if (!empty($_POST['insert_dissertativa'])) {
 
 	$sql = "INSERT INTO table_questoes (questao,dificuldade,alt1,alt2,alt3,alt4,alt5,alt_correta,img) VALUES ('$questao','$dificuldade_questao','-','-','-','-','-','-','$imgConvertida')";
 }
-if($_SERVER["REQUEST_METHOD"] == "POST") {
-	if ($db->query($sql) === TRUE) {
-		echo "<script type='javascript'>alert('Email enviado com Sucesso!');";
-		echo "javascript:window.location='professor.php';</script>";
-	} else {
-		echo "Error: " . $sql . "<br>" . $conn->error;
+	if($_SERVER["REQUEST_METHOD"] == "POST") {
+		if ($db->query($sql) === TRUE) {
+			echo "<script type='javascript'>alert('Email enviado com Sucesso!');";
+			echo "javascript:window.location='professor.php';</script>";
+		} else {
+			echo "Error: " . $sql . "<br>" . $conn->error;
+		}
 	}
-}
 
 
 ?>

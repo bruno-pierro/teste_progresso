@@ -5,4 +5,5 @@
    define('DB_DATABASE', 'bd_login');
    define('DB_PORT', '3306');
    $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
+    mysqli_set_charset($db,'utf8');
 ?>
