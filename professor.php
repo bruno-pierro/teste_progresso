@@ -25,14 +25,14 @@ if (!empty($_POST['insert_dissertativa'])) {
 
 	$sql = "INSERT INTO table_questoes (questao,dificuldade,alt1,alt2,alt3,alt4,alt5,alt_correta,img) VALUES ('$questao','$dificuldade_questao','-','-','-','-','-','-','$imgConvertida')";
 }
-	if($_SERVER["REQUEST_METHOD"] == "POST") {
-		if ($db->query($sql) === TRUE) {
-			echo "<script type='javascript'>alert('Email enviado com Sucesso!');";
-			echo "javascript:window.location='professor.php';</script>";
-		} else {
-			echo "Error: " . $sql . "<br>" . $conn->error;
-		}
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+	if ($db->query($sql) === TRUE) {
+		echo "<script type='javascript'>alert('Email enviado com Sucesso!');";
+		echo "javascript:window.location='professor.php';</script>";
+	} else {
+		echo "Error: " . $sql . "<br>" . $conn->error;
 	}
+}
 
 
 ?>
@@ -69,13 +69,7 @@ if (!empty($_POST['insert_dissertativa'])) {
 	<div class="wrapper">
 		<header class="main-head">
 		</header>
-		<nav class="main-nav">
-			<ul>
-				<li class="dropdown-item"><a href="professor.php">Inserir Questões</a></li>
-				<li class="dropdown-item"><a href="consulta_questoes.php">Consultar Questões</a></li>
-				<li class="dropdown-item"><a href="admin.php">Admin</a></li>
-			</ul>
-		</nav>
+		<?php include('nav.php') ?>
 
 		<!-- SELETEOR DE TIPO DE QUESTÃO -->
 		<article class="content" id="seletor_tipo">

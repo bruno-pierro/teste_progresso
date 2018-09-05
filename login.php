@@ -21,12 +21,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
  $active = $row['id'];
  $active2 = $row2['cargo'];
+ $active3 = $row['senha'];
 
 
  $count = mysqli_num_rows($result);
  $_SESSION['username'] = $active;
  $_SESSION['curso'] = $row['curso'];
  $_SESSION['cargo'] = $active2;
+ $_SESSION['senha'] = $active3;
 
       // If result matched $myusername and $mypassword, table row must be 1 row
 
@@ -35,7 +37,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
          //$_SESSION['login_user'] = $myusername;
 
   $_SESSION['login'] = time();
-  header("location: index.html");
+  header("location: coord.php");
 }else if($count == 1 and $active2 == 'professor'){
  $_SESSION['login'] = time();
  header("location: professor.php"); 

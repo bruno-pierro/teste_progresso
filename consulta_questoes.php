@@ -15,13 +15,7 @@
 
 	<div class="wrapper">
 		<!-- <header class="main-head">The header</header> -->
-		<nav class="main-nav">
-			<ul>
-				<li class="dropdown-item"><a href="professor.php">Inserir Questões</a></li>
-				<li class="dropdown-item"><a href="consulta_questoes.php">Consultar Questões</a></li>
-				<li class="dropdown-item"><a href="admin.php">Admin</a></li>
-			</ul>
-		</nav>
+		<?php include('nav.php') ?>
 		<article class="content">
 			<h1>Consultar questões:</h1>
 			<table class="monta table table-striped">
@@ -45,13 +39,18 @@
 					$results = mysqli_query($db,$query);
 
 					while ($row = mysqli_fetch_array($results)) {
-						if(!$row['img']){
+						if(!$row['img'] && !$row['alt_correta']){
 							$certo = $row['alt_correta'];
 							echo "<tr id='".$row['id']."'><td>" . $row['questao'] . "</td><td>" . $row['alt1'] ."</td><td>".$row['alt2']."</td><td>".$row['alt3']."</td><td>".$row['alt4']."</td><td>".$row['alt5']."</td><td>Questão Dissertativa</td><td><img style='width:50px; height:50px;' data-toggle='modal' data-target='#as' id='img".$row['id']."' class='imagemModal' src='img/indisponivel.png' disabled></td><td><a id='".$row['id']."' href='' onclick='edit(this.id);'><i class='far fa-edit'></a></i><a href='' id='".$row['id']."' onclick='exclui(this.id);'><i class='fas fa-times'></i></a></td></tr>";
 							continue;
-						}else
-						$certo = $row['alt_correta'];
-						echo "<tr id='".$row['id']."'><td>" . $row['questao'] . "</td><td>" . $row['alt1'] ."</td><td>".$row['alt2']."</td><td>".$row['alt3']."</td><td>".$row['alt4']."</td><td>".$row['alt5']."</td><td>".$row['alt'.$certo.'']. "</td><td><img style='width:50px; height:50px;' onclick='img(this.id);' data-toggle='modal' data-target='#exampleModal' id='img".$row['id']."' class='imagemModal' src='".$row['img']."'></td><td><a id='".$row['id']."' href='' onclick='edit(this.id);'><i class='far fa-edit'></a></i><a href='' id='".$row['id']."' onclick='exclui(this.id);'><i class='fas fa-times'></i></a></td></tr>";
+						}else if (!$row['img'] && $row['alt_correta']) {
+							$certo = $row['alt_correta'];
+							echo "<tr id='".$row['id']."'><td>" . $row['questao'] . "</td><td>" . $row['alt1'] ."</td><td>".$row['alt2']."</td><td>".$row['alt3']."</td><td>".$row['alt4']."</td><td>".$row['alt5']."</td><td>".$row['alt'.$certo.'']. "</td><td><img style='width:50px; height:50px;' data-toggle='modal' data-target='#as' id='img".$row['id']."' class='imagemModal' src='img/indisponivel.png' disabled></td><td><a id='".$row['id']."' href='' onclick='edit(this.id);'><i class='far fa-edit'></a></i><a href='' id='".$row['id']."' onclick='exclui(this.id);'><i class='fas fa-times'></i></a></td></tr>";
+						}else{
+							
+							$certo = $row['alt_correta'];
+							echo "<tr id='".$row['id']."'><td>" . $row['questao'] . "</td><td>" . $row['alt1'] ."</td><td>".$row['alt2']."</td><td>".$row['alt3']."</td><td>".$row['alt4']."</td><td>".$row['alt5']."</td><td>".$row['alt'.$certo.'']. "</td><td><img style='width:50px; height:50px;' onclick='img(this.id);' data-toggle='modal' data-target='#exampleModal' id='img".$row['id']."' class='imagemModal' src='".$row['img']."'></td><td><a id='".$row['id']."' href='' onclick='edit(this.id);'><i class='far fa-edit'></a></i><a href='' id='".$row['id']."' onclick='exclui(this.id);'><i class='fas fa-times'></i></a></td></tr>";
+						}
 
 					}
 

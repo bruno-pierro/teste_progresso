@@ -1,32 +1,23 @@
 <?php 
-
-
 include("config_questoes.php");
 if($_SERVER["REQUEST_METHOD"] == "POST") {
-
-
-
-$id_edicao = mysqli_real_escape_string($db,$_POST['id_edicao']);
-$questao = mysqli_real_escape_string($db,$_POST['pergunta']);
-$alt1 = mysqli_real_escape_string($db,$_POST['alt1']); 
-$alt2 = mysqli_real_escape_string($db,$_POST['alt2']); 
-$alt3 = mysqli_real_escape_string($db,$_POST['alt3']); 
-$alt4 = mysqli_real_escape_string($db,$_POST['alt4']); 
-$alt5 = mysqli_real_escape_string($db,$_POST['alt5']); 
-$alt_correta = mysqli_real_escape_string($db,$_POST['questao_correta']);
-$imgConvertida = mysqli_real_escape_string($db,$_POST['imgConvertida']); 
- 
- $sql = " UPDATE table_questoes SET questao='$questao',alt1='$alt1', alt2='$alt2', alt3 = '$alt3', alt4='$alt4',alt5='$alt5', alt_correta='$alt_correta', img='$imgConvertida' where id='$id_edicao'";
- $results = mysqli_query($db,$sql);
-
-
+	$id_edicao = mysqli_real_escape_string($db,$_POST['id_edicao']);
+	$questao = mysqli_real_escape_string($db,$_POST['pergunta']);
+	$alt1 = mysqli_real_escape_string($db,$_POST['alt1']); 
+	$alt2 = mysqli_real_escape_string($db,$_POST['alt2']); 
+	$alt3 = mysqli_real_escape_string($db,$_POST['alt3']); 
+	$alt4 = mysqli_real_escape_string($db,$_POST['alt4']); 
+	$alt5 = mysqli_real_escape_string($db,$_POST['alt5']); 
+	$alt_correta = mysqli_real_escape_string($db,$_POST['questao_correta']);
+	$imgConvertida = mysqli_real_escape_string($db,$_POST['imgConvertida']); 
+	
+	$sql = " UPDATE table_questoes SET questao='$questao',alt1='$alt1', alt2='$alt2', alt3 = '$alt3', alt4='$alt4',alt5='$alt5', alt_correta='$alt_correta', img='$imgConvertida' where id='$id_edicao'";
+	$results = mysqli_query($db,$sql);
 }
 $edit_id = $_GET['teste'];
 $query="SELECT questao, alt1,alt2,alt3,alt4,alt5,alt_correta,id, img FROM table_questoes where id ='$edit_id'";
 $results = mysqli_query($db,$query);
 $row = mysqli_fetch_array($results);
-
-
 ?>
 
 <!DOCTYPE html>
