@@ -48,6 +48,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	<title></title>
 	<script type="text/javascript">
 		
+		function areaAtuacao(){
+			if ($('#q_alt').prop("checked")) {
+				$('#seletor_tipo').css("display","none");
+				$('#alternativa').css("display","block");
+				$('#dissertativa').css("display","none");
+			}else if ($('#q_dis').prop("checked")){
+				$('#seletor_tipo').css("display","none");
+				$('#alternativa').css("display","none");
+				$('#dissertativa').css("display","block");
+			}
+		}
 		function mudaTipo(){
 			if ($('#q_alt').prop("checked")) {
 				$('#seletor_tipo').css("display","none");
@@ -71,15 +82,31 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 		</header>
 		<?php include('nav.php') ?>
 
-		<!-- SELETEOR DE TIPO DE QUESTÃO -->
-		<article class="content" id="seletor_tipo">
+		<!-- SELETEOR DE AREA ATUAÇÃO -->
+		<article class="content" id="seletor_area">
 			<div class="form-group">
 				<fieldset style="border: 1px solid #00AD8E">
-					<legend class="seletor_tipo legenda">Selecione o tipo da questão:</legend>
+					<legend class="seletor_tipo legenda">Selecione a área de conhecimento:</legend>
 
-					<div class="radio">
+
+
+					<select>
+
+						<option value=""></option>
+
+					</select>
+
+
+
+
+					<div class="checkbox">
 						<input type="radio" id="q_alt" name="tipo_questao" value="1" onchange="mudaTipo()" />
 						<label for="q_alt">Alternativa</label>
+					</div>
+
+					<div class="radio">
+						<input type="radio" id="q_dis" name="tipo_questao" value="2" onchange="mudaTipo()" />
+						<label for="q_dis">Dissertativa</label>
 					</div>
 
 					<div class="radio">
