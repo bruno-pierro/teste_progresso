@@ -12,6 +12,7 @@
 <body>
 	<?php 
 	include('header.php');
+	include('config_questoes.php')
 	?>
 	<div class="wrapper">
 		<header class="main-head"></header>
@@ -33,32 +34,41 @@
 								<th>
 									<input list="browsers" class="questao1">
 									<datalist id="browsers">
-										<option value="Internet Explorer">
-											<option value="Firefox">
-												<option value="Google Chrome">
-													<option value="Opera">
-														<option value="Safari">
-														</datalist>
-													</th>
-													<th><input type="number" min="1" max="10" name="quantidade1" class="questao1"></th>
-													<th><input type="number" min="1" max="3" name="dificuldade" class="questao1"></th>
-													<th><button type="button" class="btn btn-secondary questao1 bt1" onclick="checa()">Inserir</button></th>
-												</tr>
-											</tbody>
-											<tfoot>
-												<tr>
-													<th><button type="button" class="btn btn-secondary" onclick="gera()">Gerar Prova</button></th>
-													<th class="contador" colspan="3">Quantidade de questões: 0</th>
-												</tr>
-											</tfoot>
-										</table>
-									</form>
-								</div>
-							</article>
+										<?php 
 
-							<footer class="main-footer"></footer>
-						</div>
-					</body>
-					<?php include('footer.php') ?>
-					<script type="text/javascript" src=js/scripts.js></script>
-					</html>
+										include("config_questoes.php");
+										$id_materia = $_POST['change'];
+										$query2="SELECT * FROM table_materia";
+										$results2 = mysqli_query($db,$query2);
+										while($row2 = mysqli_fetch_array($results2))
+										{
+											echo '<option  id="materia_'.$row2['index_materia'].'">' 
+											. $row2['nome_materia'] 
+											. '</option>';
+										}
+
+										?>
+									</datalist>
+								</th>
+								<th><input type="number" min="1" max="10" name="quantidade1" class="questao1"></th>
+								<th><input type="number" min="1" max="3" name="dificuldade" class="questao1"></th>
+								<th><button type="button" class="btn btn-secondary questao1 bt1" onclick="checa()">Inserir</button></th>
+							</tr>
+						</tbody>
+						<tfoot>
+							<tr>
+								<th><button type="button" class="btn btn-secondary" onclick="gera()">Gerar Prova</button></th>
+								<th class="contador" colspan="3">Quantidade de questões: 0</th>
+							</tr>
+						</tfoot>
+					</table>
+				</form>
+			</div>
+		</article>
+
+		<footer class="main-footer"></footer>
+	</div>
+</body>
+<?php include('footer.php') ?>
+<script type="text/javascript" src=js/scripts.js></script>
+</html>
