@@ -142,3 +142,16 @@ function img(id){
 }
 
 
+function select_materia(x){
+  var id_materia = x[x.selectedIndex].id;
+	$.ajax({
+		method: "POST",
+		url: 'change.php',
+		data:{'change':id_materia},
+		success:function(html) {
+			alert(html);
+		}
+
+	});
+}
+

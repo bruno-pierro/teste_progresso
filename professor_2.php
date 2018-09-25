@@ -39,9 +39,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE html>
 <html>
 <head>
+
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	<link rel="stylesheet" type="text/css" href="css/professor.css">
@@ -71,7 +72,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 			}
 		}
 
-	</script>
+	
+
+</script>
 </head>
 <body >
 
@@ -82,37 +85,60 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 		</header>
 		<?php include('nav.php') ?>
 
-		<!-- SELETEOR DE AREA ATUAÇÃO -->
+		<!-- SELETOR DE AREA ATUAÇÃO -->
 		<article class="content" id="seletor_area">
 			<div class="form-group">
 				<fieldset style="border: 1px solid #00AD8E">
 					<legend class="seletor_tipo legenda">Selecione a área de conhecimento:</legend>
 
 
+					<?php 
 
-					<select>
+					$query="SELECT * FROM table_areas";
+					$results = mysqli_query($db,$query);
+					echo '<select name="select" onchange="'?>select_materia(this)<?php echo'">';
+					echo "<option disabled selected value> -- Selecione uma área -- </option>";
+					while($row = mysqli_fetch_array($results))
+					{
+						echo '<option value="' . $row['index_area'] . '" class="materias" id="'.$row['index_area'].'">' 
+						. $row['area'] 
+						. '</option>';
+					}
+					echo '</select>';
 
-						<option value=""></option>
+					?>
+					<br><br>
 
-					</select>
+				</fieldset>
+			</div>
+		</article>
 
 
+		<!-- SELETOR DE MATERIA -->
+		<article class="content" id="seletor_materia">
+			<div class="form-group">
+				<fieldset style="border: 1px solid #00AD8E">
+					<legend class="seletor_tipo legenda">Selecione a matéria desejada:</legend>
 
 
-					<div class="checkbox">
-						<input type="radio" id="q_alt" name="tipo_questao" value="1" onchange="mudaTipo()" />
-						<label for="q_alt">Alternativa</label>
-					</div>
+					<?php 
 
-					<div class="radio">
-						<input type="radio" id="q_dis" name="tipo_questao" value="2" onchange="mudaTipo()" />
-						<label for="q_dis">Dissertativa</label>
-					</div>
+					// $query2="SELECT * FROM table_materia where index_area =".id_materia."";
+					// $results2 = mysqli_query($db,$query2);
 
-					<div class="radio">
-						<input type="radio" id="q_dis" name="tipo_questao" value="2" onchange="mudaTipo()" />
-						<label for="q_dis">Dissertativa</label>
-					</div>
+					print_r($row2);
+					echo '<select name="select" >';
+					echo "<option disabled selected value> -- Selecione uma matéria -- </option>";
+					while($row2 = mysqli_fetch_array($results2))
+					{
+						echo '<option value="' . $row['index_area'] . '" id="'.$row['index_area'].'">' 
+						. $row2['nome_materia'] 
+						. '</option>';
+					}
+					echo '</select>';
+
+					?>
+
 
 				</fieldset>
 			</div>
