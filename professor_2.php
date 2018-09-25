@@ -123,18 +123,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 					<?php 
 
-					// $query2="SELECT * FROM table_materia where index_area =".id_materia."";
-					// $results2 = mysqli_query($db,$query2);
+					echo '<select name="select" id="materias_select">';
 
-					print_r($row2);
-					echo '<select name="select" >';
-					echo "<option disabled selected value> -- Selecione uma matéria -- </option>";
-					while($row2 = mysqli_fetch_array($results2))
-					{
-						echo '<option value="' . $row['index_area'] . '" id="'.$row['index_area'].'">' 
-						. $row2['nome_materia'] 
-						. '</option>';
-					}
 					echo '</select>';
 
 					?>

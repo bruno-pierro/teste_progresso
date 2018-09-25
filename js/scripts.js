@@ -149,7 +149,7 @@ function select_materia(x){
 		url: 'change.php',
 		data:{'change':id_materia},
 		success:function(html) {
-			alert(html);
+			$('#materias_select').html(html);
 		}
 
 	});

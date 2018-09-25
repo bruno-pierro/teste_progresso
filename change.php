@@ -3,14 +3,13 @@
 
 include("config_questoes.php");
 $id_materia = $_POST['change'];
-echo $id_materia;
 $query2="SELECT * FROM table_materia where index_area=".$id_materia."";
-echo $query2;
 $results2 = mysqli_query($db,$query2);
-if(isset($results2)) {
-	print_r('Registro Excluido!');
-} else {
-	print_r('Registro Excluido!');
+while($row2 = mysqli_fetch_array($results2))
+{
+	echo '<option value="materia_' . $row2['index_materia'] . '" id="materia_'.$row2['index_materia'].'">' 
+	. $row2['nome_materia'] 
+	. '</option>';
 }
 
 ?>
