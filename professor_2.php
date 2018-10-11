@@ -13,8 +13,10 @@ if(!empty($_POST['insert_alternativa'])) {
 	$alt_correta = mysqli_real_escape_string($db,$_POST['questao_correta']);
 	$dificuldade_questao = mysqli_real_escape_string($db,$_POST['dificuldade']);
 	$imgConvertida = mysqli_real_escape_string($db,$_POST['imgConvertida']);
+	$area_conhecimento = mysqli_real_escape_string($db,$_POST['area_conhecimento']);
+	$materia_escolhida = mysqli_real_escape_string($db,$_POST['materia_escolhida']);
 
-	$sql = "INSERT INTO table_questoes (questao,dificuldade,alt1,alt2,alt3,alt4,alt5,alt_correta,img) VALUES ('$questao','$dificuldade_questao','$alt1','$alt2','$alt3','$alt4','$alt5','$alt_correta','$imgConvertida')";
+	$sql = "INSERT INTO table_questoes (area_conhecimento,materia,questao,dificuldade,alt1,alt2,alt3,alt4,alt5,alt_correta,img) VALUES ('$area_conhecimento','$materia_escolhida','$questao','$dificuldade_questao','$alt1','$alt2','$alt3','$alt4','$alt5','$alt_correta','$imgConvertida')";
 
 
 }
@@ -22,13 +24,15 @@ if (!empty($_POST['insert_dissertativa'])) {
 	$questao = mysqli_real_escape_string($db,$_POST['pergunta']);
 	$dificuldade_questao = mysqli_real_escape_string($db,$_POST['dificuldade']);
 	$imgConvertida = mysqli_real_escape_string($db,$_POST['imgConvertida']);
+	$area_conhecimento = mysqli_real_escape_string($db,$_POST['area_conhecimento']);
+	$materia_escolhida = mysqli_real_escape_string($db,$_POST['materia_escolhida']);
 
-	$sql = "INSERT INTO table_questoes (questao,dificuldade,alt1,alt2,alt3,alt4,alt5,alt_correta,img) VALUES ('$questao','$dificuldade_questao','-','-','-','-','-','-','$imgConvertida')";
+	$sql = "INSERT INTO table_questoes (area_conhecimento,materia,questao,dificuldade,alt1,alt2,alt3,alt4,alt5,alt_correta,img) VALUES ('$area_conhecimento','$materia_escolhida','$questao','$dificuldade_questao','-','-','-','-','-','-','$imgConvertida')";
 }
 if($_SERVER["REQUEST_METHOD"] == "POST") {
 	if ($db->query($sql) === TRUE) {
 		echo "<script type='javascript'>alert('Email enviado com Sucesso!');";
-		echo "javascript:window.location='professor.php';</script>";
+		echo "javascript:window.location='professor_2.php';</script>";
 	} else {
 		echo "Error: " . $sql . "<br>" . $conn->error;
 	}
@@ -50,15 +54,23 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	<script type="text/javascript">
 		
 		function areaAtuacao(){
-			if ($('#q_alt').prop("checked")) {
-				$('#seletor_tipo').css("display","none");
-				$('#alternativa').css("display","block");
-				$('#dissertativa').css("display","none");
-			}else if ($('#q_dis').prop("checked")){
-				$('#seletor_tipo').css("display","none");
-				$('#alternativa').css("display","none");
-				$('#dissertativa').css("display","block");
-			}
+
+			// coloca os id's selecionados fora do form dentro do form
+			var area_conhecimento = $('.seletor_inicio').val();
+			var materia_escolhida = $('.seletor_materia').val().substring(8,10);
+
+
+			$('.form_questao').append('<input type="hidden" name="area_conhecimento" value="'+area_conhecimento+'">');
+			$('.form_questao').append('<input type="hidden" name="materia_escolhida" value="'+materia_escolhida+'">');
+
+
+
+			$('#seletor_area').css("display","none");
+			$('#seletor_tipo').css("display","block");
+			$('#seletor_materia').css("display","none");
+
+
+			
 		}
 		function mudaTipo(){
 			if ($('#q_alt').prop("checked")) {
@@ -72,9 +84,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 			}
 		}
 
-	
 
-</script>
+
+	</script>
 </head>
 <body >
 
@@ -96,7 +108,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 					$query="SELECT * FROM table_areas";
 					$results = mysqli_query($db,$query);
-					echo '<select name="select" onchange="'?>select_materia(this)<?php echo'">';
+					echo '<select name="select" class="seletor_inicio" onchange="'?>select_materia(this)<?php echo'">';
 					echo "<option disabled selected value> -- Selecione uma área -- </option>";
 					while($row = mysqli_fetch_array($results))
 					{
@@ -121,21 +133,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 					<legend class="seletor_tipo legenda">Selecione a matéria desejada:</legend>
 
 
-					<?php 
+					<select name="select" class="seletor_materia" id="materias_select" disabled>
+						<option value="" selected disabled>-- Selecione uma matéria --</option>
+						<!-- php vai popular o datalist -->
 
-					echo '<select name="select" id="materias_select">';
+					</select>
 
-					echo '</select>';
-
-					?>
-
+					<br><br>
 
 				</fieldset>
 			</div>
+			<button onclick="areaAtuacao()" name="insert_alternativa" value="Inserir Alternativa" class="btn btn-success">Próximo</button>
 		</article>
 
 		<!--QUESTÃO ALTERNATIVA  -->
-
 
 		<!-- SELETEOR DE TIPO DE QUESTÃO -->
 		<article class="content" id="seletor_tipo" style="display: none;">
@@ -161,7 +172,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 		<article class="content" id="alternativa" style="display: none;">
 			<h1>Inserir Questão</h1>
-			<form action = "professor.php" method = "POST">
+			<form action = "professor_2.php" method = "POST" class="form_questao">
 				<div class="form-group">
 					<label for="pergunta"><h5>Digite a questão:</h5> </label>
 					<textarea class="form-control" id="pergunta" name="pergunta" rows="3" style="resize: none;"></textarea>
@@ -276,7 +287,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 		<article class="content" id="dissertativa" style="display: none;">
 			<h1>Inserir Questão</h1>
-			<form action = "professor.php" method = "POST">
+			<form action = "professor_2.php" method = "POST" class="form_questao">
 				<div class="form-group">
 					<label for="pergunta"><h5>Digite a questão:</h5> </label>
 					<textarea class="form-control" id="pergunta" name="pergunta" rows="3" style="resize: none;"></textarea>
@@ -299,17 +310,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 						<legend class="legenda">Selecione a dificuldade da questão:</legend>
 
 						<div class="radio">
-							<input type="radio" id="facil" name="dificuldade" value="1" />
+							<input type="radio" id="facil" name="dificuldade" value="1"/>
 							<label for="facil">Facil</label>
 						</div>
 
 						<div class="radio">
-							<input type="radio" id="medio" name="dificuldade" value="2" />
+							<input type="radio" id="medio" name="dificuldade" value="2"/>
 							<label for="medio">Médio</label>
 						</div>
 
 						<div class="radio">
-							<input type="radio" id="dificil" name="dificuldade" value="3" />
+							<input type="radio" id="dificil" name="dificuldade" value="3"/>
 							<label for="dificil">Difícil</label>
 						</div>
 					</fieldset>

@@ -14,7 +14,6 @@
 	<?php include ("header.php") ?>
 
 	<div class="wrapper">
-		<!-- <header class="main-head">The header</header> -->
 		<?php include('nav.php') ?>
 		<article class="content">
 			<h1>Consultar questões:</h1>
@@ -54,7 +53,6 @@
 
 					}
 
-					//echo $src[0].'<br><br>';
 					?>
 				</tbody>
 			</table>
