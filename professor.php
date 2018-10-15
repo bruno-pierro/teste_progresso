@@ -28,7 +28,7 @@ if (!empty($_POST['insert_dissertativa'])) {
 if($_SERVER["REQUEST_METHOD"] == "POST") {
 	if ($db->query($sql) === TRUE) {
 		echo "<script type='javascript'>alert('Email enviado com Sucesso!');";
-		echo "javascript:window.location='professor.php';</script>";
+		echo "javascript:window.location='professor_2.php';</script>";
 	} else {
 		echo "Error: " . $sql . "<br>" . $conn->error;
 	}
@@ -118,7 +118,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 		<article class="content" id="alternativa" style="display: none;">
 			<h1>Inserir Questão</h1>
-			<form action = "professor.php" method = "POST">
+			<form action = "professor_2.php" method = "POST">
 				<div class="form-group">
 					<label for="pergunta"><h5>Digite a questão:</h5> </label>
 					<textarea class="form-control" id="pergunta" name="pergunta" rows="3" style="resize: none;"></textarea>
@@ -219,7 +219,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 				// if($_SERVER["REQUEST_METHOD"] == "POST") {
 				// 	if ($db->query($sql) === TRUE) {
 				// 		echo "<script type='javascript'>alert('Email enviado com Sucesso!');";
-				// 		echo "javascript:window.location='professor.php';</script>";
+				// 		echo "javascript:window.location='professor_2.php';</script>";
 				// 	} else {
 				// 		echo "Error: " . $sql . "<br>" . $conn->error;
 				// 	}
@@ -233,7 +233,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 		<article class="content" id="dissertativa" style="display: none;">
 			<h1>Inserir Questão</h1>
-			<form action = "professor.php" method = "POST">
+			<form action = "professor_2.php" method = "POST">
 				<div class="form-group">
 					<label for="pergunta"><h5>Digite a questão:</h5> </label>
 					<textarea class="form-control" id="pergunta" name="pergunta" rows="3" style="resize: none;"></textarea>
@@ -276,7 +276,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 				// if($_SERVER["REQUEST_METHOD"] == "POST") {
 				// 	if ($db->query($sql) === TRUE) {
 				// 		echo "<script type='javascript'>alert('Email enviado com Sucesso!');";
-				// 		echo "javascript:window.location='professor.php';</script>";
+				// 		echo "javascript:window.location='professor_2.php';</script>";
 				// 	} else {
 				// 		echo "Error: " . $sql . "<br>" . $conn->error;
 				// 	}

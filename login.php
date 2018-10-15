@@ -40,7 +40,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
   header("location: coord.php");
 }else if($count == 1 and $active2 == 'professor'){
  $_SESSION['login'] = time();
- header("location: professor.php"); 
+ header("location: professor_2.php"); 
 }
 else {
  $error = "Your Login Name or Password is invalid";

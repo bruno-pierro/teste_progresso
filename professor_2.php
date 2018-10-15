@@ -16,7 +16,7 @@ if(!empty($_POST['insert_alternativa'])) {
 	$area_conhecimento = mysqli_real_escape_string($db,$_POST['area_conhecimento']);
 	$materia_escolhida = mysqli_real_escape_string($db,$_POST['materia_escolhida']);
 
-	$sql = "INSERT INTO table_questoes (area_conhecimento,materia,questao,dificuldade,alt1,alt2,alt3,alt4,alt5,alt_correta,img) VALUES ('$area_conhecimento','$materia_escolhida','$questao','$dificuldade_questao','$alt1','$alt2','$alt3','$alt4','$alt5','$alt_correta','$imgConvertida')";
+	$sql = "INSERT INTO table_questoes (index_area,materia,questao,dificuldade,alt1,alt2,alt3,alt4,alt5,alt_correta,img) VALUES ('$area_conhecimento','$materia_escolhida','$questao','$dificuldade_questao','$alt1','$alt2','$alt3','$alt4','$alt5','$alt_correta','$imgConvertida')";
 
 
 }
@@ -27,7 +27,7 @@ if (!empty($_POST['insert_dissertativa'])) {
 	$area_conhecimento = mysqli_real_escape_string($db,$_POST['area_conhecimento']);
 	$materia_escolhida = mysqli_real_escape_string($db,$_POST['materia_escolhida']);
 
-	$sql = "INSERT INTO table_questoes (area_conhecimento,materia,questao,dificuldade,alt1,alt2,alt3,alt4,alt5,alt_correta,img) VALUES ('$area_conhecimento','$materia_escolhida','$questao','$dificuldade_questao','-','-','-','-','-','-','$imgConvertida')";
+	$sql = "INSERT INTO table_questoes (index_area,materia,questao,dificuldade,alt1,alt2,alt3,alt4,alt5,alt_correta,img) VALUES ('$area_conhecimento','$materia_escolhida','$questao','$dificuldade_questao','-','-','-','-','-','-','$imgConvertida')";
 }
 if($_SERVER["REQUEST_METHOD"] == "POST") {
 	if ($db->query($sql) === TRUE) {
@@ -273,7 +273,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 				// if($_SERVER["REQUEST_METHOD"] == "POST") {
 				// 	if ($db->query($sql) === TRUE) {
 				// 		echo "<script type='javascript'>alert('Email enviado com Sucesso!');";
-				// 		echo "javascript:window.location='professor.php';</script>";
+				// 		echo "javascript:window.location='professor_2.php';</script>";
 				// 	} else {
 				// 		echo "Error: " . $sql . "<br>" . $conn->error;
 				// 	}
@@ -330,7 +330,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 				// if($_SERVER["REQUEST_METHOD"] == "POST") {
 				// 	if ($db->query($sql) === TRUE) {
 				// 		echo "<script type='javascript'>alert('Email enviado com Sucesso!');";
-				// 		echo "javascript:window.location='professor.php';</script>";
+				// 		echo "javascript:window.location='professor_2.php';</script>";
 				// 	} else {
 				// 		echo "Error: " . $sql . "<br>" . $conn->error;
 				// 	}

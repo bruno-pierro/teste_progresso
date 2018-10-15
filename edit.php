@@ -36,7 +36,7 @@ $row = mysqli_fetch_array($results);
 		<!-- <header class="main-head">The header</header> -->
 		<nav class="main-nav">
 			<ul>
-				<li class="dropdown-item"><a href="professor.php">Inserir Questões</a></li>
+				<li class="dropdown-item"><a href="professor_2.php">Inserir Questões</a></li>
 				<li class="dropdown-item"><a href="consulta_questoes.php">Consultar Questões</a></li>
 				<li class="dropdown-item"><a href="admin.php">Admin</a></li>
 			</ul>
