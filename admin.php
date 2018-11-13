@@ -62,6 +62,8 @@
 					if ($_SESSION['cargo'] == 'coordenador') {
 						echo '<li class="nav-item">
 						<a class="nav-link" id="profile-tab" data-toggle="tab" href="#profs" role="tab" aria-controls="profile" aria-selected="false">Professores Cadastrados</a>
+						</li><li class="nav-item">
+						<a class="nav-link" id="profile-tab" data-toggle="tab" href="#materias" role="tab" aria-controls="profile" aria-selected="false">Materias Cadastradas</a>
 						</li>';
 					}
 
@@ -140,8 +142,33 @@
 								$results = mysqli_query($db,$query);
 
 								while ($row = mysqli_fetch_array($results)) {
-										echo "<tr><td>" . $row['nome'] . "</td><td>" . $row['id'] ."</td><td>".$row['curso']."</td><td>".$row['cargo']."</td></tr>";
-										continue;
+									echo "<tr><td>" . $row['nome'] . "</td><td>" . $row['id'] ."</td><td>".$row['curso']."</td><td>".$row['cargo']."</td></tr>";
+									continue;
+								}
+								?>
+							</tbody>
+						</table>
+					</div>
+					<div class="tab-pane fade" id="materias" role="tabpanel" aria-labelledby="materias-tab">
+						<table class="monta table table-striped">
+							<thead class="thead-light">
+								<tr>
+									<th scope="col">Nome da matéria</th>
+									<th scope="col">Area de conhecimento</th>
+								</tr>
+							</thead><br>
+							<tbody>
+								<?php 
+								// include("config_questoes.php");
+								$query2="SELECT m.nome_materia, m.index_area, a.area, a.index_area FROM bd_questoes.table_materia m left join bd_questoes.table_areas a on m.index_area = a.index_area ";
+								$results2 = mysqli_query($db,$query2);
+								if (!$results2) {
+									printf("Error: %s\n", mysqli_error($db));
+									exit();
+								}
+								while ($row2 = mysqli_fetch_array($results2)) {
+									echo "<tr><td>" . $row2['nome_materia'] . "</td><td>" . $row2['area'] ."</td></tr>";
+									continue;
 								}
 								?>
 							</tbody>

@@ -19,7 +19,7 @@
 		<?php include('nav.php') ?>
 		<article class="content">
 			<div class="container">
-				<form style="width: 65%;" class="col-centered">
+				<form class="col-centered">
 					<table class="monta table table-striped">
 						<thead class="thead-light">
 							<tr>
@@ -29,29 +29,19 @@
 								<th scope="col"></th>
 							</tr>
 						</thead>
-						<tbody>
-							<tr class="monta1">
+						<tbody id="grade_questoes">
+							<tr class="monta1 ">
 								<th>
-									<input list="browsers" class="questao1">
-									<datalist id="browsers">
+									<!-- <input list="materias" style="width:100%" class="questao1" id="materia_selecionada"> -->
+									<select id="materias" style="width:100%" class="questao1" onchange="select_materia_prova(this)">
 										<?php 
-
-										include("config_questoes.php");
-										$id_materia = $_POST['change'];
-										$query2="SELECT * FROM table_materia";
-										$results2 = mysqli_query($db,$query2);
-										while($row2 = mysqli_fetch_array($results2))
-										{
-											echo '<option  id="materia_'.$row2['index_materia'].'">' 
-											. $row2['nome_materia'] 
-											. '</option>';
-										}
-
+										include("materia_prova.php")
+									
 										?>
-									</datalist>
+									</select>
 								</th>
-								<th><input type="number" min="1" max="10" name="quantidade1" class="questao1"></th>
-								<th><input type="number" min="1" max="3" name="dificuldade" class="questao1"></th>
+								<th><input type="number" min="1" max="10" name="quantidade1" class="questao1" style="width:100%"></th>
+								<th><input type="number" min="1" max="3" name="dificuldade" class="questao1" style="width:100%"></th>
 								<th><button type="button" class="btn btn-secondary questao1 bt1" onclick="checa()">Inserir</button></th>
 							</tr>
 						</tbody>

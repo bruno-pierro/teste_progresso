@@ -2,12 +2,21 @@
 	var y = 2;
 	let quantidade = 0;
 	let valFinal = 0;
+			var itm = $('#grade_questoes tr');
+
+
 
 	function checa(){
 
 		if($('.questao1').eq(0).val() == "" || $('.questao1').eq(1).val() == "" || $('.questao1').eq(2).val() == ""){
-			$('.monta1').after('<tr class="alert alert-danger alert-dismissible fade show" role="alert"><th colspan="4"><center><strong>OPS!</strong> Preencha todos os campos!<button type="button" class="close" data-dismiss="alert" aria-label="Close">    <span aria-hidden="true">&times;</span></button></th></center></tr>')
+			$('.monta1:last').after('<tr class="alert alert-danger alert-dismissible fade show" role="alert"><th colspan="4"><center><strong>OPS!</strong> Preencha todos os campos!<button type="button" class="close" data-dismiss="alert" aria-label="Close">    <span aria-hidden="true">&times;</span></button></th></center></tr>')
 		}else{
+			var q_id = 0;
+			// var inputQuestao = $('.questao1').eq(0).val();
+			var inputQuestao = $('.questao1').eq(0).val();
+
+			q_id = $('#materias').find('option[value="' +inputQuestao + '"]').attr('id');
+			
 			monta();
 		}
 
@@ -17,9 +26,21 @@
 
 		quantidade = parseInt($('input[name=quantidade'+x+']').val());
 		if (valFinal < 30){
-			$('tbody tr:last').after('<tr class="monta1"><th><input list="browsers" class="questao'+y+'"><datalist id="browsers"> <option value="Internet Explorer"><option value="Firefox"> <option value="Google Chrome"> <option value="Opera"><option value="Safari"></datalist></th><th><input class="questao'+y+'" type="number" min="1" max="10" name="quantidade'+y+'"></th><th><input type="number" class="questao'+y+'" min="1" max="3" name="Materia"></th><th><button type="button" class="btn btn-secondary bt'+y+'" onclick="checa()">Inserir</button></th></tr>')
-			$('.bt'+x+'').prop('disabled', true);
-			$('.questao'+x+'').prop('disabled', true);
+			// $('tbody tr:last').after('<tr class="monta1 questao'+y+'" "><th><select id="materias" class="questao1" onchange="select_materia_prova(this)">'<?php include("materia_prova.php")?>'</select></th><th><input class="questao'+y+'"  type="number" min="1" max="10" name="quantidade'+y+'"  style="width:100%"></th><th><input type="number" class="questao'+y+'" min="1" max="3" name="Materia"  style="width:100%"></th><th><button type="button" class="btn btn-secondary bt'+y+'" onclick="checa()">Inserir</button></th></tr>')
+			var cln = itm.clone(true);
+
+
+			$('#grade_questoes tr:last').after(cln)
+
+
+			$('.monta1').eq(1).addClass('monta'+y+'')
+			$('.monta1').eq(1).removeClass('monta1');
+			$('input[name=quantidade1]:last').attr('name','quantidade'+y+'')
+
+			// $('.bt'+x+'').prop('disabled', true);
+			$('.monta'+x+' select').prop('disabled', true);
+			$('.monta'+x+' input').prop('disabled', true);
+			$('.monta'+x+' button').prop('disabled', true);
 			x +=1;
 			y +=1;
 
@@ -30,6 +51,12 @@
 		};
 
 	}
+	function gera(){
+		if (valFinal < 30) {
+			alert('Não foi inserida a quantidade total de questões para a prova! \nTente Novamente\n\nTotal de questões inseridas: '+valFinal+'');
+		}
+	}
+
 
 
 
@@ -143,7 +170,7 @@ function img(id){
 
 
 function select_materia(x){
-  var id_materia = x[x.selectedIndex].id;
+	var id_materia = x[x.selectedIndex].id;
 	$.ajax({
 		method: "POST",
 		url: 'change.php',
@@ -155,5 +182,10 @@ function select_materia(x){
 		}
 
 	});
+}
+var id_materia_selecionada ;
+function select_materia_prova(x){
+	id_materia_selecionada = x[x.selectedIndex].id;
+	console.log(id_materia_selecionada);
 }
 
