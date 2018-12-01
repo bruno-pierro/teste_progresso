@@ -35,12 +35,14 @@
 
 			$('.monta1').eq(1).addClass('monta'+y+'')
 			$('.monta1').eq(1).removeClass('monta1');
+			
 			$('input[name=quantidade1]:last').attr('name','quantidade'+y+'')
 
 			// $('.bt'+x+'').prop('disabled', true);
 			$('.monta'+x+' select').prop('disabled', true);
 			$('.monta'+x+' input').prop('disabled', true);
 			$('.monta'+x+' button').prop('disabled', true);
+
 			x +=1;
 			y +=1;
 
