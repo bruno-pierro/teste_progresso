@@ -2,7 +2,8 @@
 	var y = 2;
 	let quantidade = 0;
 	let valFinal = 0;
-			var itm = $('#grade_questoes tr');
+	
+	// var itm = $('#grade_questoes tr');
 
 
 
@@ -27,16 +28,18 @@
 		quantidade = parseInt($('input[name=quantidade'+x+']').val());
 		if (valFinal < 30){
 			// $('tbody tr:last').after('<tr class="monta1 questao'+y+'" "><th><select id="materias" class="questao1" onchange="select_materia_prova(this)">'<?php include("materia_prova.php")?>'</select></th><th><input class="questao'+y+'"  type="number" min="1" max="10" name="quantidade'+y+'"  style="width:100%"></th><th><input type="number" class="questao'+y+'" min="1" max="3" name="Materia"  style="width:100%"></th><th><button type="button" class="btn btn-secondary bt'+y+'" onclick="checa()">Inserir</button></th></tr>')
-			var cln = itm.clone(true);
+			// var cln = itm.clone(true);
 
 
-			$('#grade_questoes tr:last').after(cln)
+			// $('#grade_questoes tr:last').after(cln)
+
+			$('#grade_questoes tr:last').clone().appendTo('#grade_questoes');
 
 
 			$('.monta1').eq(1).addClass('monta'+y+'')
 			$('.monta1').eq(1).removeClass('monta1');
 			
-			$('input[name=quantidade1]:last').attr('name','quantidade'+y+'')
+			$('input[name=quantidade1]:last').attr('name','quantidade'+y+'');
 
 			// $('.bt'+x+'').prop('disabled', true);
 			$('.monta'+x+' select').prop('disabled', true);
