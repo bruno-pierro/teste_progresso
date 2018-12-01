@@ -129,3 +129,12 @@ nav ul {
 .seletor_inicio{
     margin-left: 1.1em !important;
 }
+
+.alert-dismissible .close{
+    position: relative !important;
+    padding: 0 !important;
+}
+
+.alert-danger {
+    background-color: #f8d7da !important;
+    }

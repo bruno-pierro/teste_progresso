@@ -11,8 +11,11 @@
 
 	function checa(){
 
-		if($('.questao1').eq(0).val() == "" || $('.questao1').eq(1).val() == "" || $('.questao1').eq(2).val() == ""){
-			$('.monta1:last').after('<tr class="alert alert-danger alert-dismissible fade show" role="alert"><th colspan="4"><center><strong>OPS!</strong> Preencha todos os campos!<button type="button" class="close" data-dismiss="alert" aria-label="Close">    <span aria-hidden="true">&times;</span></button></th></center></tr>')
+		// if($('.questao1:last').eq(0).val() == "" || $('.questao1:last').eq(1).val() == "" || $('.questao1:last').eq(2).val() == ""){
+		// 	$('.monta'+x+':last').after('<tr class="alert alert-danger alert-dismissible fade show" role="alert"><th colspan="4"><center><strong>OPS!</strong> Preencha todos os campos!<button type="button" class="close" data-dismiss="alert" aria-label="Close">    <span aria-hidden="true">&times;</span></button></th></center></tr>')
+		// }
+		if($('.monta'+x+' select').val() == null ||$('.monta'+x+' input:first').val() == "" || $('.monta'+x+' input:last').val() == ""){
+			$('.monta'+x+':last').after('<tr class="alert alert-danger alert-dismissible fade show" role="alert"><th colspan="4"><center><strong>OPS!</strong> Preencha todos os campos!<button type="button" class="close" data-dismiss="alert" aria-label="Close">    <span aria-hidden="true">&times;</span></button></th></center></tr>')
 		}else{
 			var q_id = 0;
 			// var inputQuestao = $('.questao1').eq(0).val();
@@ -49,10 +52,12 @@
 			$('.monta'+x+' ').eq(1).removeClass('monta'+x+' ');
 			
 			$('input[name=quantidade'+x+']:last').attr('name','quantidade'+y+'');
+			$('input[name=quantidade'+x+']').attr('name','quantidade'+y+'');
 
 			$('.monta'+x+' select').prop('disabled', true);
 			$('.monta'+x+' input').prop('disabled', true);
 			$('.monta'+x+' button').prop('disabled', true);
+			$('.monta'+y+' input').val('');
 
 			x +=1;
 			y +=1;
@@ -63,7 +68,7 @@
 
 			if (valFinal > 20){
 				var max = 30 - valFinal;
-				$('.monta'+x+' input').attr('max', max);
+				$('.monta'+x+' input:first').attr('max', max);
 			}
 
 		}else{
