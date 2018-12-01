@@ -196,18 +196,6 @@ function edit(id) {
 	});
 }
 
-function editar(id) {
-	var del_id = id;
-	$.ajax({
-		method: "POST",
-		url: 'delete.php',
-		data:{'del_id':del_id},
-		success:function(html) {
-			alert(html);
-		}
-
-	});
-}
 
 function exclui(id) {
 	var del_id = id;
