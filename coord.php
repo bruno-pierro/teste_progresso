@@ -33,15 +33,15 @@
 							<tr class="monta1 ">
 								<th>
 									<!-- <input list="materias" style="width:100%" class="questao1" id="materia_selecionada"> -->
-									<select id="materias" style="width:100%" class="questao1" onchange="select_materia_prova(this)">
+									<select id="materias" style="width:100%" class="questao1 ddlMaterias" onchange="select_materia_prova(this)">
 										<?php 
 										include("materia_prova.php")
 									
 										?>
 									</select>
 								</th>
-								<th><input type="number" min="1" max="10" name="quantidade1" class="questao1" style="width:100%"></th>
-								<th><input type="number" min="1" max="3" name="dificuldade" class="questao1" style="width:100%"></th>
+								<th><input type="number" min="1" max="10" name="quantidade1" class="questao1 ddlQtd" style="width:100%"></th>
+								<th><input type="number" min="1" max="3" name="dificuldade" class="questao1 ddlDificuldade" style="width:100%"></th>
 								<th><button type="button" class="btn btn-secondary questao1 bt1" onclick="checa()">Inserir</button></th>
 							</tr>
 						</tbody>

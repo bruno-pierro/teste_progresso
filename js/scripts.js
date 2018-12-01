@@ -55,6 +55,34 @@
 		if (valFinal < 30) {
 			alert('Não foi inserida a quantidade total de questões para a prova! \nTente Novamente\n\nTotal de questões inseridas: '+valFinal+'');
 		}
+		else {
+
+			var prova = '{ "prova": { "questoes": [';
+
+			$('.ddlMaterias').each(function (index, item) {
+				
+				var usaVirgula = false;
+				
+				var materia = $(this).val();
+				
+				var ddlQuantidade = $($('.ddlQtd')[index]);
+				
+				var qtd = $(ddlQuantidade).val()
+
+				var ddlDificuldade = $($('.ddlDificuldade')[index]);
+				
+				var dificuldade = $(ddlDificuldade).val()
+
+				prova += '{ "materia": "' + materia + '", "qtd": ' + qtd + ', "dificuldade": "' + dificuldade + '" }' 
+				+ (index + 1 != $('.ddlMaterias').length ? "," : "");
+
+			});
+
+			prova += ' ] } }';
+
+			console.log(prova);
+			
+		}
 	}
 
 
