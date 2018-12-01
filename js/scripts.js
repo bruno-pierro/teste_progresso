@@ -185,12 +185,13 @@ document.getElementById("imgInp").addEventListener("change", converte);
 
 function edit(id) {
 	var edit_id = id;
+
 	$.ajax({
-		method: "POST",
+		method: "GET",
 		url: 'edit.php',
-		data:{'edit_id':'edit_id'},
+		data:{'edit_id':edit_id},
 		success:function(html) {
-			location.href="edit.php?teste="+edit_id+"";
+			location.href="edit.php?id_edicao="+edit_id+"";
 		}
 
 	});
