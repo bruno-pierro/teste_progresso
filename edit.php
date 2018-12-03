@@ -14,11 +14,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	$sql = " UPDATE table_questoes SET questao='$questao',alt1='$alt1', alt2='$alt2', alt3 = '$alt3', alt4='$alt4',alt5='$alt5', alt_correta='$alt_correta', img='$imgConvertida' where id='$id_edicao'";
 	$results = mysqli_query($db,$sql);
 }
-$edit_id = $_GET['id_edicao'];
+$edit_id = $_GET['teste'];
 $query="SELECT questao, alt1,alt2,alt3,alt4,alt5,alt_correta,id, img FROM table_questoes where id ='$edit_id'";
 $results = mysqli_query($db,$query);
 $row = mysqli_fetch_array($results);
-
 ?>
 
 <!DOCTYPE html>
@@ -30,12 +29,6 @@ $row = mysqli_fetch_array($results);
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	<link rel="stylesheet" type="text/css" href="css/professor.css">
 	<title></title>
-	<script type="text/javascript">
-		$(function() {
-			$('input[name=questao_correta]').eq(<?php echo htmlspecialchars($row['alt_correta'] -1); ?>).prop('checked',true)
-
-		});
-	</script>
 </head>
 <body>
 	<?php include ("header.php") ?>
@@ -50,7 +43,7 @@ $row = mysqli_fetch_array($results);
 		</nav>
 		<article class="content">
 			<h1>Editar Questão</h1>
-			<form action = "edit.php?id_edicao=<?php echo htmlspecialchars($row['id']); ?>" method = "POST">
+			<form action = "edit.php?teste=<?php echo htmlspecialchars($row['id']); ?>" method = "POST">
 				<div class="form-group">
 					<label for="pergunta"><h5>Digite a questão: </h5></label>
 					<input type="" name="id_edicao" style="display: none" value="<?php echo htmlspecialchars($row['id']); ?>">

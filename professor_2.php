@@ -108,7 +108,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 					$query="SELECT * FROM table_areas";
 					$results = mysqli_query($db,$query);
-					echo '<select name="select" class="seletor_inicio seletores" onchange="'?>select_materia(this)<?php echo'">';
+					echo '<select name="select" class="seletor_inicio" onchange="'?>select_materia(this)<?php echo'">';
 					echo "<option disabled selected value> -- Selecione uma área -- </option>";
 					while($row = mysqli_fetch_array($results))
 					{
@@ -133,7 +133,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 					<legend class="seletor_tipo legenda">Selecione a matéria desejada:</legend>
 
 
-					<select name="select" class="seletor_materia seletores" id="materias_select" disabled>
+					<select name="select" class="seletor_materia" id="materias_select" disabled>
 						<option value="" selected disabled>-- Selecione uma matéria --</option>
 						<!-- php vai popular o datalist -->
 
