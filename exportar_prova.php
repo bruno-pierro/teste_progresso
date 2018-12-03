@@ -25,6 +25,7 @@ foreach ($prova1["questoes"] as $value) {
     $questoes_content = "";
 
 
+
     if($questoes != null) {
 
         while ($row = mysqli_fetch_assoc($questoes)){
@@ -44,7 +45,7 @@ foreach ($prova1["questoes"] as $value) {
             $questoes_content = str_replace("{num_questao}", $row['id'], $questoes_content);
             $questoes_content = str_replace("{nome_materia}", 'Analise de Sistemas', $questoes_content);
             $questoes_content = str_replace("{dificuldade}", "Fácil", $questoes_content);
-            $questoes_content = str_replace("[IMG_QUESTAO]", $row['img'], $questoes_content);
+            $questoes_content = str_replace("[IMG_QUESTAO]", '<img src="'.$row['img'].'" style="width:30%">', $questoes_content);
             $questoes_content = str_replace("{txt_questao}", $row['questao'], $questoes_content);
 
 
@@ -53,6 +54,7 @@ foreach ($prova1["questoes"] as $value) {
 
 
         }
+
     }
 
     ;  
@@ -95,24 +97,24 @@ $questoes_content = "";
 
 //echo var_dump($data[4]['questao']);
 
-for ($n = 0; $n <= count($data); $n++) {
+// for ($n = 0; $n <= count($data); $n++) {
 
-    echo $n[''];
+//     echo $n[''];
 
-    $questoes_content = $questoes_content.$questao_template;
-    $questoes_content = str_replace("{num_questao}", $n, $questoes_content);
-    $questoes_content = str_replace("{nome_materia}", 'Analise de Sistemas', $questoes_content);
-    $questoes_content = str_replace("{dificuldade}", "Fácil", $questoes_content);
-    $questoes_content = str_replace("[IMG_QUESTAO]", "<img src='' border='0'/>", $questoes_content);
-    $questoes_content = str_replace("{txt_questao}", "Por que, questão coisa e tal?", $questoes_content);
+//     $questoes_content = $questoes_content.$questao_template;
+//     $questoes_content = str_replace("{num_questao}", $n, $questoes_content);
+//     $questoes_content = str_replace("{nome_materia}", 'Analise de Sistemas', $questoes_content);
+//     $questoes_content = str_replace("{dificuldade}", "Fácil", $questoes_content);
+//     $questoes_content = str_replace("[IMG_QUESTAO]", "<img src='' border='0'/>", $questoes_content);
+//     $questoes_content = str_replace("{txt_questao}", "Por que, questão coisa e tal?", $questoes_content);
 
 
-    echo($questoes_content);
-}
+//     echo($questoes_content);
+// }
 
 $content = str_replace("[QUESTOES]", $questoes_content, $content);
 
-echo $content;
+echo $content;  
 
 $curl = curl_init();
 
