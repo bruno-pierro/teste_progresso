@@ -2,23 +2,27 @@
 
 include("config_questoes.php");
 
-$json = '{ "prova": { "questoes": [ { "materia": "14", "qtd": "10", "dificuldade": "2" }, { "materia": "41", "qtd": "10", "dificuldade": "Facil" }, { "materia": "34", "qtd": "10", "dificuldade": "Facil" } ] } }';
+$json = '{ "prova": { "questoes": [ { "materia": "1", "qtd": "5", "dificuldade": "2" }, { "materia": "41", "qtd": "10", "dificuldade": "2" }, { "materia": "34", "qtd": "10", "dificuldade": "1" } ] } }';
 $prova = json_decode($json, true);
 
 $data = [];
 $prova1 = $prova["prova"];
 
 
+
+$content = file_get_contents('template_prova.html');
+$questao_template = file_get_contents('template_questao.html');
+
+
 foreach ($prova1["questoes"] as $value) {
     $qtd=  $value["qtd"];
     $materia=  $value["materia"];
+    $dificuldade=  $value["dificuldade"];
 
 
-    $queryQuestoes = "select id, questao, alt1, alt2, alt3, alt4, alt5, alt_correta, img from table_questoes where materia=".$materia.";";
+    $queryQuestoes = "select id, questao, alt1, alt2, alt3, alt4, alt5, alt_correta, img from table_questoes where materia=".$materia." and dificuldade=".$dificuldade." limit ".$qtd.";";
     $questoes = mysqli_query($db, $queryQuestoes);
 
-    $content = file_get_contents('template_prova.html');
-    $questao_template = file_get_contents('template_questao.html');
 
 //TODO: insert template
 
@@ -31,33 +35,27 @@ foreach ($prova1["questoes"] as $value) {
         while ($row = mysqli_fetch_assoc($questoes)){
                     //var_dump($row);
             array_push($data,$row);
-            // echo $row['questao'].'<br>';
-            // echo $row['alt1'].'<br>';
-            // echo $row['alt2'].'<br>';
-            // echo $row['alt3'].'<br>';
-            // echo $row['alt4'].'<br>';
-            // echo $row['alt5'].'<br>';
 
-            // echo '<br><br>';
+
 
 
             $questoes_content = $questoes_content.$questao_template;
             $questoes_content = str_replace("{num_questao}", $row['id'], $questoes_content);
-            $questoes_content = str_replace("{nome_materia}", 'Analise de Sistemas', $questoes_content);
-            $questoes_content = str_replace("{dificuldade}", "Fácil", $questoes_content);
-            $questoes_content = str_replace("[IMG_QUESTAO]", '<img src="'.$row['img'].'" style="width:30%">', $questoes_content);
             $questoes_content = str_replace("{txt_questao}", $row['questao'], $questoes_content);
+            $questoes_content = str_replace("{nome_materia}", 'Analise de Sistemas', $questoes_content);
+            $questoes_content = str_replace("[IMG_QUESTAO]", '<img src="'.$row['img'].'" style="width:30%">', $questoes_content);
+            $questoes_content = str_replace("{dificuldade}", "Fácil", $questoes_content);
 
 
-            echo($questoes_content);
+            // echo($questoes_content);
 
 
 
         }
 
     }
+    $content = str_replace("[QUESTOES]", $questoes_content, $content);
 
-    ;  
 
 }
 
@@ -88,12 +86,12 @@ foreach ($prova1["questoes"] as $value) {
 // }
 
 
-$content = file_get_contents('template_prova.html');
-$questao_template = file_get_contents('template_questao.html');
+// $content = file_get_contents('template_prova.html');
+// $questao_template = file_get_contents('template_questao.html');
 
 //TODO: insert template
 
-$questoes_content = "";
+// $questoes_content = "";
 
 //echo var_dump($data[4]['questao']);
 
@@ -112,7 +110,7 @@ $questoes_content = "";
 //     echo($questoes_content);
 // }
 
-$content = str_replace("[QUESTOES]", $questoes_content, $content);
+ $content = str_replace("[QUESTOES]", $questoes_content, $content);
 
 echo $content;  
 
@@ -128,6 +126,6 @@ curl_setopt_array($curl, array(
 ));
 
 $response = curl_exec($curl);
-file_put_contents('prova-teste-1.pdf', $response);
+file_put_contents('prova-teste-2.pdf', $response);
 
 ?>
