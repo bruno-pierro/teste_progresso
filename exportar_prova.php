@@ -1,11 +1,13 @@
 <?php 
 include("config_questoes.php");
 
-$json = $_POST['json_parsed'];
+//$json = $_POST['json_parsed'];
 
-echo $json;
+var_dump($_POST);
 
-// $json = '{ "prova": { "questoes": [ { "materia": "1", "qtd": "5", "dificuldade": "2" }, { "materia": "41", "qtd": "10", "dificuldade": "2" }, { "materia": "14", "qtd": "10", "dificuldade": "2" } ] } }';
+//echo $json;
+///
+$json = '{ "prova": { "questoes": [ { "materia": "1", "qtd": "5", "dificuldade": "2" }, { "materia": "41", "qtd": "10", "dificuldade": "2" }, { "materia": "14", "qtd": "10", "dificuldade": "2" } ] } }';
 
 $prova = json_decode($json, true);
 
@@ -32,20 +34,12 @@ foreach ($prova1["questoes"] as $value) {
     if($questoes != null) {
 
         while ($row = mysqli_fetch_assoc($questoes)){
-                    //var_dump($row);
             array_push($data,$row);
-            // $questoes_content = $questoes_content.$questao_template;
-            // $questoes_content = str_replace("{num_questao}", $row['id'], $questoes_content);
-            // $questoes_content = str_replace("{txt_questao}", $row['questao'], $questoes_content);
-            // $questoes_content = str_replace("{nome_materia}", 'Analise de Sistemas', $questoes_content);
-            // $questoes_content = str_replace("[IMG_QUESTAO]", '<img src="'.$row['img'].'" style="width:30%">', $questoes_content);
-            // $questoes_content = str_replace("{dificuldade}", "Fácil", $questoes_content);
-            // echo($questoes_content);
         }
 
     }
 
-    $content = str_replace("[QUESTOES]", $questoes_content, $content);
+    //$content = str_replace("[QUESTOES]", $questoes_content, $content);
 }
 
 for($i = 0;$i<=sizeof($data)-1;$i++){
@@ -55,7 +49,6 @@ for($i = 0;$i<=sizeof($data)-1;$i++){
   $questoes_content = str_replace("{dificuldade}", "Fácil", $questoes_content);
   $questoes_content = str_replace("[IMG_QUESTAO]", "<img src='".$data[$i]['img']."' style='width:35%'border='0'/>", $questoes_content);
   $questoes_content = str_replace("{txt_questao}", $data[$i]['questao'], $questoes_content);
-
 }
 
 
