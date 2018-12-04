@@ -1,10 +1,10 @@
 var x = 1;
-	var y = 2;
-	let quantidade = 0;
-	let valFinal = 0;
-	let controle = 0;
+var y = 2;
+let quantidade = 0;
+let valFinal = 0;
+let controle = 0;
 
-	
+
 	// var itm = $('#grade_questoes tr');
 
 
@@ -112,11 +112,11 @@ var x = 1;
 			});
 
 			prova += ' ] } }';
-
+			console.log(prova);
 			$.ajax({
 				method: "POST",
 				url: 'exportar_prova.php',
-				data: prova,
+				data: {"data":JSON.stringify(prova)},
 				success:function(html) {
 					$('form').append('<a href="prova-teste-3.pdf">PDF GERADO COM SUCESSO</a>');
 				}
