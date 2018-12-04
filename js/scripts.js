@@ -1,4 +1,4 @@
-	var x = 1;
+var x = 1;
 	var y = 2;
 	let quantidade = 0;
 	let valFinal = 0;
@@ -96,8 +96,6 @@
 
 			$('.ddlMaterias').each(function (index, item) {
 				
-				var usaVirgula = false;
-				
 				var materia = $(this).val();
 				
 				var ddlQuantidade = $($('.ddlQtd')[index]);
@@ -115,16 +113,12 @@
 
 			prova += ' ] } }';
 
-
-			sessionStorage.setItem('prova_json', JSON.stringify(prova));
-			var json_parsed = JSON.parse(sessionStorage.getItem('prova_json'));
-
 			$.ajax({
 				method: "POST",
 				url: 'exportar_prova.php',
-				data:{'json_parsed':json_parsed},
+				data: prova,
 				success:function(html) {
-					location.href="exportar_prova.php";
+					$('form').append('<a href="prova-teste-3.pdf">PDF GERADO COM SUCESSO</a>');
 				}
 
 			});
@@ -252,4 +246,3 @@ function select_materia_prova(x){
 	id_materia_selecionada = x[x.selectedIndex].id;
 	console.log(id_materia_selecionada);
 }
-
