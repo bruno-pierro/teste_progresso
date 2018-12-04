@@ -1,16 +1,11 @@
 <?php 
 include("config_questoes.php");
-//$json2=  
 
-$json = json_decode($_POST['data']);//(String)$Json2;
-// var_dump(json_decode(file_get_contents("php://input")))
-//echo $json;
-///
-//$json = '{ "prova": { "questoes": [{ "materia": "Teoria de Sistemas de Informação", "qtd": 10, "dificuldade": "1" },{ "materia": "Teoria de Sistemas de Informação", "qtd": 10, "dificuldade": "2" },{ "materia": "Teoria de Sistemas de Informação", "qtd": 10, "dificuldade": "3" } ] } }';
+$json = json_decode($_POST['data']);
 
 $prova = json_decode($json, true);
 
-print_r($prova);
+//print_r($prova);
 $data = [];
 $prova1 = $prova["prova"];
 $content = file_get_contents('template_prova.html');

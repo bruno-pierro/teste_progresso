@@ -1,1 +1,1 @@
-{ "prova": { "questoes": [{ "materia": "Teoria de Sistemas de Informação", "qtd": 10, "dificuldade": "1" },{ "materia": "Teoria de Sistemas de Informação", "qtd": 10, "dificuldade": "2" },{ "materia": "Teoria de Sistemas de Informação", "qtd": 10, "dificuldade": "3" } ] } }
+{ "prova": { "questoes": [{ "materia": "1", "qtd": 10, "dificuldade": "2" },{ "materia": "26", "qtd": 10, "dificuldade": "1" },{ "materia": "1", "qtd": 10, "dificuldade": "1" } ] } }
