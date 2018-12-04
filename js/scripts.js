@@ -115,9 +115,19 @@
 
 			prova += ' ] } }';
 
-			console.log(prova);
 
 			sessionStorage.setItem('prova_json', JSON.stringify(prova));
+			var json_parsed = JSON.parse(sessionStorage.getItem('prova_json'));
+
+			$.ajax({
+				method: "POST",
+				url: 'exportar_prova.php',
+				data:{'json_parsed':json_parsed},
+				success:function(html) {
+					location.href="exportar_prova.php";
+				}
+
+			});
 			
 		}
 	}

@@ -1,7 +1,11 @@
 <?php 
 include("config_questoes.php");
 
-$json = '{ "prova": { "questoes": [ { "materia": "1", "qtd": "5", "dificuldade": "2" }, { "materia": "41", "qtd": "10", "dificuldade": "2" }, { "materia": "14", "qtd": "10", "dificuldade": "2" } ] } }';
+$json = $_POST['json_parsed'];
+
+echo $json;
+
+// $json = '{ "prova": { "questoes": [ { "materia": "1", "qtd": "5", "dificuldade": "2" }, { "materia": "41", "qtd": "10", "dificuldade": "2" }, { "materia": "14", "qtd": "10", "dificuldade": "2" } ] } }';
 
 $prova = json_decode($json, true);
 
