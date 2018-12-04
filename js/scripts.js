@@ -116,6 +116,8 @@
 			prova += ' ] } }';
 
 			console.log(prova);
+
+			sessionStorage.setItem('prova_json', JSON.stringify(prova));
 			
 		}
 	}

@@ -55,8 +55,8 @@ for($i = 0;$i<=sizeof($data)-1;$i++){
 }
 
 
-  echo($questoes_content);
- $content = str_replace("[QUESTOES]", $questoes_content, $content);
+echo($questoes_content);
+$content = str_replace("[QUESTOES]", $questoes_content, $content);
 
 $curl = curl_init();
 curl_setopt_array($curl, array(
@@ -68,5 +68,5 @@ curl_setopt_array($curl, array(
     CURLOPT_USERPWD => 'a012fe5dc105499391232cd72b181159:'
 ));
 $response = curl_exec($curl);
-file_put_contents('prova-teste-2.pdf', $response);
+file_put_contents('prova-teste-3.pdf', $response);
 ?>
