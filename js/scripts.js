@@ -96,12 +96,12 @@ let controle = 0;
 
 			$('.ddlMaterias').each(function (index, item) {
 				
-				// var materia = $(this).val();
-				var materia = $("#materias option:selected");
+				var materia = $(this).val();
+				//var materia = $("#materias option:selected");
 				
 				var ddlQuantidade = $($('.ddlQtd')[index]);
 
-				console.log(ddlQuantidade);
+				//console.log(ddlQuantidade);
 				
 				var qtd = $(ddlQuantidade).val()
 
@@ -115,13 +115,15 @@ let controle = 0;
 			});
 
 			prova += ' ] } }';
-			console.log(prova);
+			
+			//console.log(prova);
+			
 			$.ajax({
 				method: "POST",
 				url: 'exportar_prova.php',
-				data: {"data":JSON.stringify(prova)},
-				success:function(html) {
-					$('form').append('<a href="prova-teste-3.pdf">PDF GERADO COM SUCESSO</a>');
+				data: { "data": JSON.stringify(prova) },
+				success: function(html) {
+					$('form').append('<a href="prova-teste.pdf">PDF GERADO COM SUCESSO</a>');
 				}
 
 			});

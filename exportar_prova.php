@@ -1,12 +1,12 @@
 <?php 
 include("config_questoes.php");
-$json2=  json_decode($_POST['data']);
+//$json2=  
 
-$json = (String)$Json2;
+$json = json_decode($_POST['data']);//(String)$Json2;
 // var_dump(json_decode(file_get_contents("php://input")))
 //echo $json;
 ///
-$json = '{ "prova": { "questoes": [{ "materia": "Teoria de Sistemas de Informação", "qtd": 10, "dificuldade": "1" },{ "materia": "Teoria de Sistemas de Informação", "qtd": 10, "dificuldade": "2" },{ "materia": "Teoria de Sistemas de Informação", "qtd": 10, "dificuldade": "3" } ] } }';
+//$json = '{ "prova": { "questoes": [{ "materia": "Teoria de Sistemas de Informação", "qtd": 10, "dificuldade": "1" },{ "materia": "Teoria de Sistemas de Informação", "qtd": 10, "dificuldade": "2" },{ "materia": "Teoria de Sistemas de Informação", "qtd": 10, "dificuldade": "3" } ] } }';
 
 $prova = json_decode($json, true);
 
@@ -20,7 +20,7 @@ foreach ($prova1["questoes"] as $value) {
     $qtd=  $value["qtd"];
     $materia=  $value["materia"];
     $dificuldade=  $value["dificuldade"];
-    $queryQuestoes = "select id, questao, alt1, alt2, alt3, alt4, alt5, alt_correta,materia, img from table_questoes where materia=".$materia." and dificuldade=".$dificuldade." limit ".$qtd.";";
+    $queryQuestoes = "select id, questao, alt1, alt2, alt3, alt4, alt5, alt_correta,materia, img from table_questoes where materia=".$materia." and dificuldade=".$dificuldade." order by RAND() limit ".$qtd.";";
 
 
     $questoes = mysqli_query($db, $queryQuestoes);
@@ -34,16 +34,35 @@ foreach ($prova1["questoes"] as $value) {
     //$content = str_replace("[QUESTOES]", $questoes_content, $content);
 }
 for($i = 0;$i<sizeof($data);$i++){
-  $questoes_content = $questoes_content.$questao_template;
-  $questoes_content = str_replace("{num_questao}", $i+1, $questoes_content);
-  $questoes_content = str_replace("{nome_materia}", $data[$i]['materia'], $questoes_content);
-  $questoes_content = str_replace("{dificuldade}", "Fácil", $questoes_content);
-  $questoes_content = str_replace("[IMG_QUESTAO]", "<img src='".$data[$i]['img']."' style='width:35%'border='0'/>", $questoes_content);
-  $questoes_content = str_replace("{txt_questao}", $data[$i]['questao'], $questoes_content);
-}
-echo($questoes_content);
-$content = str_replace("[QUESTOES]", $questoes_content, $content);
+    $questoes_content = $questoes_content.$questao_template;
+    $questoes_content = str_replace("{num_questao}", $i+1, $questoes_content);
+    $questoes_content = str_replace("{nome_materia}", $data[$i]['materia'], $questoes_content);
+    $questoes_content = str_replace("{dificuldade}", "Fácil", $questoes_content);
+    $questoes_content = str_replace("[IMG_QUESTAO]", "<img src='".$data[$i]['img']."' style='width:35%'border='0'/>", $questoes_content);
+    $questoes_content = str_replace("{txt_questao}", $data[$i]['questao'], $questoes_content);
 
+    $alternativas_content = '';
+
+    if($data[$i]['alt1'] != '') { //or NULL
+        $alternativas_content = '<p>a)' + $data[$i]['alt1'] + '</p>';
+    }
+    if($data[$i]['alt2'] != '') { //or NULL
+        $alternativas_content = '<p>b)' + $data[$i]['alt2'] + '</p>';
+    }
+    if($data[$i]['alt3'] != '') { //or NULL
+        $alternativas_content = '<p>c)' + $data[$i]['alt3'] + '</p>';
+    }
+    if($data[$i]['alt4'] != '') { //or NULL
+        $alternativas_content = '<p>d)' + $data[$i]['alt4'] + '</p>';
+    }
+    if($data[$i]['alt5'] != '') { //or NULL
+        $alternativas_content = '<p>e)' + $data[$i]['alt5'] + '</p>';
+    }
+
+    $questoes_content = str_replace("[ALTERNATIVAS]", $alternativas_content, $questoes_content);
+}
+//echo($questoes_content);
+$content = str_replace("[QUESTOES]", $questoes_content, $content);
 
 $curl = curl_init();
 curl_setopt_array($curl, array(
@@ -55,6 +74,6 @@ curl_setopt_array($curl, array(
     CURLOPT_USERPWD => '291f581b35fb4d3f9e21039fc2d9858e'
 ));
 $response = curl_exec($curl);
-file_put_contents('prova-teste-newkey2.pdf', $response);
+file_put_contents('prova-teste.pdf', $response);
 file_put_contents('post2.json', $json);
 ?>
