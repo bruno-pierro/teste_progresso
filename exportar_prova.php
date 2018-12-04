@@ -1,12 +1,16 @@
 <?php 
 include("config_questoes.php");
-$json2 =  json_decode($_POST['json']);
-echo $json2;
+$json2=  json_decode($_POST['data']);
+
+$json = (String)$Json2;
 // var_dump(json_decode(file_get_contents("php://input")))
 //echo $json;
 ///
-$json = '{ "prova": { "questoes": [ { "materia": "1", "qtd": "5", "dificuldade": "2" }, { "materia": "41", "qtd": "10", "dificuldade": "2" }, { "materia": "14", "qtd": "10", "dificuldade": "2" } ] } }';
+$json = '{ "prova": { "questoes": [{ "materia": "Teoria de Sistemas de Informação", "qtd": 10, "dificuldade": "1" },{ "materia": "Teoria de Sistemas de Informação", "qtd": 10, "dificuldade": "2" },{ "materia": "Teoria de Sistemas de Informação", "qtd": 10, "dificuldade": "3" } ] } }';
+
 $prova = json_decode($json, true);
+
+print_r($prova);
 $data = [];
 $prova1 = $prova["prova"];
 $content = file_get_contents('template_prova.html');
@@ -17,6 +21,8 @@ foreach ($prova1["questoes"] as $value) {
     $materia=  $value["materia"];
     $dificuldade=  $value["dificuldade"];
     $queryQuestoes = "select id, questao, alt1, alt2, alt3, alt4, alt5, alt_correta,materia, img from table_questoes where materia=".$materia." and dificuldade=".$dificuldade." limit ".$qtd.";";
+
+
     $questoes = mysqli_query($db, $queryQuestoes);
 //TODO: insert template
     $questoes_content = "";
@@ -49,6 +55,6 @@ curl_setopt_array($curl, array(
     CURLOPT_USERPWD => '291f581b35fb4d3f9e21039fc2d9858e'
 ));
 $response = curl_exec($curl);
-// file_put_contents('prova-teste-newkey2.pdf', $response);
-file_put_contents('post2.json', $json2);
+file_put_contents('prova-teste-newkey2.pdf', $response);
+file_put_contents('post2.json', $json);
 ?>
