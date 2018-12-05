@@ -35,26 +35,37 @@ for($i = 0;$i<sizeof($data);$i++){
     $questoes_content = str_replace("{dificuldade}", "Fácil", $questoes_content);
     $questoes_content = str_replace("[IMG_QUESTAO]", "<img src='".$data[$i]['img']."' style='width:35%'border='0'/>", $questoes_content);
     $questoes_content = str_replace("{txt_questao}", $data[$i]['questao'], $questoes_content);
+  
+    //ROLANTE
+    // $questoes_content = str_replace("{alt1}", $data[$i]['alt1'], $questoes_content);
+    // $questoes_content = str_replace("{alt2}", $data[$i]['alt2'], $questoes_content);
+    // $questoes_content = str_replace("{alt3}", $data[$i]['alt3'], $questoes_content);
+    // $questoes_content = str_replace("{alt4}", $data[$i]['alt4'], $questoes_content);
 
-    $alternativas_content = '';
+    // $alternativas_content = '';
 
-    if($data[$i]['alt1'] != '') { //or NULL
-        $alternativas_content = '<p>a)' + $data[$i]['alt1'] + '</p>';
+    if($data[$i]['alt1'] != '-') { //or NULL
+        $questoes_content = str_replace("{alt1}", $data[$i]['alt1'], $questoes_content);
     }
-    if($data[$i]['alt2'] != '') { //or NULL
-        $alternativas_content = '<p>b)' + $data[$i]['alt2'] + '</p>';
+    if($data[$i]['alt2'] != '-') { //or NULL
+        $questoes_content = str_replace("{alt2}", $data[$i]['alt2'], $questoes_content);
     }
-    if($data[$i]['alt3'] != '') { //or NULL
-        $alternativas_content = '<p>c)' + $data[$i]['alt3'] + '</p>';
+    if($data[$i]['alt3'] != '-') { //or NULL
+        $questoes_content = str_replace("{alt3}", $data[$i]['alt3'], $questoes_content);
     }
-    if($data[$i]['alt4'] != '') { //or NULL
-        $alternativas_content = '<p>d)' + $data[$i]['alt4'] + '</p>';
+    if($data[$i]['alt4'] != '-') { //or NULL
+        $questoes_content = str_replace("{alt4}", $data[$i]['alt4'], $questoes_content);
     }
-    if($data[$i]['alt5'] != '') { //or NULL
-        $alternativas_content = '<p>e)' + $data[$i]['alt5'] + '</p>';
+    if($data[$i]['alt5'] != '-') { //or NULL
+        $questoes_content = str_replace("{alt5}", $data[$i]['alt5'], $questoes_content);
     }
+    // $alternativas_content = '<p>a)' + $data[$i]['alt1'] + '</p>';
+    // $alternativas_content = '<p>a)' + $data[$i]['alt2'] + '</p>';
+    // $alternativas_content = '<p>a)' + $data[$i]['alt3'] + '</p>';
+    // $alternativas_content = '<p>a)' + $data[$i]['alt4'] + '</p>';
+    // $alternativas_content = '<p>a)' + $data[$i]['alt5'] + '</p>';
 
-    $questoes_content = str_replace("[ALTERNATIVAS]", $alternativas_content, $questoes_content);
+    // $questoes_content = str_replace("[ALTERNATIVAS]", $alternativas_content, $questoes_content);
 }
 //echo($questoes_content);
 $content = str_replace("[QUESTOES]", $questoes_content, $content);
@@ -70,5 +81,5 @@ curl_setopt_array($curl, array(
 ));
 $response = curl_exec($curl);
 file_put_contents('prova-teste.pdf', $response);
-file_put_contents('post2.json', $json);
+file_put_contents('post2.json', $alternativas_content);
 ?>
