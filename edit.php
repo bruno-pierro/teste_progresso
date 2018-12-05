@@ -123,7 +123,7 @@ $row = mysqli_fetch_array($results);
 				<button type="submit" class="btn btn-success">Editar</button><br />
 				
 			</form>
-		</article> 
+		</article>  
 		<!-- <footer class="main-footer">The footer</footer> -->
 	</div>
 	<?php include("footer.php") ?>
