@@ -99,7 +99,7 @@ USE `bd_questoes`;
 -- Estrutura da tabela `table_areas`
 --
 
-CREATE TABLE `table_areas` (
+CREATE TABLE `table_areas` (  
   `index_area` int(11) NOT NULL,
   `area` text COLLATE utf8_swedish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
