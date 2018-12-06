@@ -234,6 +234,7 @@ function img(id){
 
 function select_materia(x){
 	var id_materia = x[x.selectedIndex].id;
+	console.log(id_materia);
 	$.ajax({
 		method: "POST",
 		url: 'change.php',
@@ -250,4 +251,8 @@ var id_materia_selecionada ;
 function select_materia_prova(x){
 	id_materia_selecionada = x[x.selectedIndex].id;
 	$("#"+id_materia_selecionada+"").attr('disabled');
+}
+
+function checaID(){
+	$('#btnTipo').attr('disabled',false);
 }

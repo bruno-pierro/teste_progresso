@@ -1,0 +1,13 @@
+body {
+    background: white;
+    margin: 3em auto;
+    padding: 2em;
+}
+
+.conteudo{
+	columns: 2;
+    text-align: justify;
+
+}
+
+

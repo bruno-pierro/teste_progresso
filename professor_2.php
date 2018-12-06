@@ -19,8 +19,12 @@ if(!empty($_POST['insert_alternativa'])) {
 	$sql = "INSERT INTO table_questoes (index_area,materia,questao,dificuldade,alt1,alt2,alt3,alt4,alt5,alt_correta,img) VALUES ('$area_conhecimento','$materia_escolhida','$questao','$dificuldade_questao','$alt1','$alt2','$alt3','$alt4','$alt5','$alt_correta','$imgConvertida')";
 
 
+}else{
+	echo "<script type='javascript'>alert('Email enviado com Sucesso!');";
+	echo "javascript:window.location='index.php';</script>";
 }
 if (!empty($_POST['insert_dissertativa'])) {
+
 	$questao = mysqli_real_escape_string($db,$_POST['pergunta']);
 	$dificuldade_questao = mysqli_real_escape_string($db,$_POST['dificuldade']);
 	$imgConvertida = mysqli_real_escape_string($db,$_POST['imgConvertida']);
@@ -28,6 +32,8 @@ if (!empty($_POST['insert_dissertativa'])) {
 	$materia_escolhida = mysqli_real_escape_string($db,$_POST['materia_escolhida']);
 
 	$sql = "INSERT INTO table_questoes (index_area,materia,questao,dificuldade,alt1,alt2,alt3,alt4,alt5,alt_correta,img) VALUES ('$area_conhecimento','$materia_escolhida','$questao','$dificuldade_questao','-','-','-','-','-','-','$imgConvertida')";
+	
+
 }
 if($_SERVER["REQUEST_METHOD"] == "POST") {
 	if ($db->query($sql) === TRUE) {
@@ -59,7 +65,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 			var area_conhecimento = $('.seletor_inicio').val();
 			var materia_escolhida = $('.seletor_materia').val().substring(8,10);
 
-
+	
 			$('.form_questao').append('<input type="hidden" name="area_conhecimento" value="'+area_conhecimento+'">');
 			$('.form_questao').append('<input type="hidden" name="materia_escolhida" value="'+materia_escolhida+'">');
 
@@ -68,7 +74,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 			$('#seletor_area').css("display","none");
 			$('#seletor_tipo').css("display","block");
 			$('#seletor_materia').css("display","none");
-
+		
 
 			
 		}
@@ -133,7 +139,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 					<legend class="seletor_tipo legenda">Selecione a matéria desejada:</legend>
 
 
-					<select name="select" class="seletor_materia seletores" id="materias_select" disabled>
+					<select name="select" class="seletor_materia seletores" id="materias_select" onchange="checaID()" disabled>
 						<option value="" selected disabled>-- Selecione uma matéria --</option>
 						<!-- php vai popular o datalist -->
 
@@ -143,7 +149,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 				</fieldset>
 			</div>
-			<button onclick="areaAtuacao()" name="insert_alternativa" value="Inserir Alternativa" class="btn btn-success">Próximo</button>
+			<button onclick="areaAtuacao()" id="btnTipo" disabled name="insert_alternativa" value="Inserir Alternativa" class="btn btn-success">Próximo</button>
 		</article>
 
 		<!--QUESTÃO ALTERNATIVA  -->
