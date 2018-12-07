@@ -1,10 +1,9 @@
 <?php 
 include("config.php");
 
-  session_start();
+session_start();
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
-      // username and password sent from form 
 
  $myusername = mysqli_real_escape_string($db,$_POST['username']);
  $mypassword = mysqli_real_escape_string($db,$_POST['password']); 
@@ -30,17 +29,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
  $_SESSION['cargo'] = $active2;
  $_SESSION['senha'] = $active3;
 
-      // If result matched $myusername and $mypassword, table row must be 1 row
 
  if($count == 1 and $active2 == 'coordenador') {
-         //session_register("myusername");
-         //$_SESSION['login_user'] = $myusername;
 
   $_SESSION['login'] = time();
   header("location: coord.php");
+
 }else if($count == 1 and $active2 == 'professor'){
+
  $_SESSION['login'] = time();
  header("location: professor_2.php"); 
+
 }
 else {
  $error = "Your Login Name or Password is invalid";
@@ -64,16 +63,14 @@ else {
   <div style = "margin:30px auto; width: 500px;" class="card">
     <h3 class="text-center mb-4 h3 mb-3 font-weight-normal" style="margin-top: 1.5em;font-family: 'Titillium Web', sans-serif;color:#00B233">Prova Certa <i class="fas fa-check-double" style="color:#c13434;"></i></i></h3>
     <form action = "" method = "post" style="width: 65%;" class="col-centered  form-signin">
-      <div class="form-label-group">
-        
+      <div class="form-label-grup">
+
         <input type = "text" name = "username" placeholder="Login" required autofocus class = "form-control"/>
-        <label for="username">Usuário: </label>
 
       </div>
-      <div class="form-label-group">
-        
+      <div class="form-label-grup" style="margin-top:10px;">
+
         <input type = "password" name = "password" placeholder="Senha" class = "form-control" required />
-        <label for="password">Senha  :</label>
 
       </div><br>
       <button type="submit" class="btn btn-lg btn-primary btn-block">Login</button><br />
