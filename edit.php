@@ -14,7 +14,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	$sql = " UPDATE table_questoes SET questao='$questao',alt1='$alt1', alt2='$alt2', alt3 = '$alt3', alt4='$alt4',alt5='$alt5', alt_correta='$alt_correta', img='$imgConvertida' where id='$id_edicao'";
 	$results = mysqli_query($db,$sql);
 }
-$edit_id = $_GET['teste'];
+$edit_id = $_GET['id_edicao'];
 $query="SELECT questao, alt1,alt2,alt3,alt4,alt5,alt_correta,id, img FROM table_questoes where id ='$edit_id'";
 $results = mysqli_query($db,$query);
 $row = mysqli_fetch_array($results);
@@ -34,6 +34,18 @@ $row = mysqli_fetch_array($results);
 	<?php include ("header.php") ?>
 	<div class="wrapper">
 		<!-- <header class="main-head">The header</header> -->
+		<input type="" class="correto_edit" style="display:none" value="<?php echo htmlspecialchars($row['alt_correta']); ?>">
+		<script type="text/javascript">
+			$( document ).ready(function() {
+				if ($('#alt1').val() != '-') {
+					var correto = $('.correto_edit').val() -1;
+					$('.correto').eq(correto).attr('checked',true);					
+				}
+
+
+			});
+
+		</script>
 		<nav class="main-nav">
 			<ul>
 				<li class="dropdown-item"><a href="professor_2.php">Inserir Questões</a></li>
@@ -75,7 +87,7 @@ $row = mysqli_fetch_array($results);
 					<input class="form-control" id="alt1" name="alt1"  rows="1" max="100" value="<?php echo htmlspecialchars($row['alt1']); ?>"></input>
 					<div class="input-group-append">
 						<div class="input-group-text">
-							<input type="radio" aria-label="Radio button for following text input" name="questao_correta" value="1">
+							<input type="radio" aria-label="Radio button for following text input" name="questao_correta" class="correto" value="1">
 						</div>
 					</div>
 				</div>
@@ -85,7 +97,7 @@ $row = mysqli_fetch_array($results);
 					<input class="form-control" id="alt2" name="alt2" rows="1" max="100"  value="<?php echo htmlspecialchars($row['alt2']); ?>"></input>
 					<div class="input-group-append">
 						<div class="input-group-text">
-							<input type="radio" aria-label="Radio button for following text input" name="questao_correta" value="2">
+							<input type="radio" aria-label="Radio button for following text input" name="questao_correta" class="correto" value="2">
 						</div>
 					</div>
 				</div>
@@ -95,7 +107,7 @@ $row = mysqli_fetch_array($results);
 					<input class="form-control" id="alt3" name="alt3" rows="1" max="100"  value="<?php echo htmlspecialchars($row['alt3']); ?>"></input>
 					<div class="input-group-append">
 						<div class="input-group-text">
-							<input type="radio" aria-label="Radio button for following text input" name="questao_correta" value="3">
+							<input type="radio" aria-label="Radio button for following text input" name="questao_correta" class="correto" value="3">
 						</div>
 					</div>
 				</div>
@@ -105,7 +117,7 @@ $row = mysqli_fetch_array($results);
 					<input class="form-control" id="alt4" name="alt4" rows="1" max="100"  value="<?php echo htmlspecialchars($row['alt4']); ?>"></input>
 					<div class="input-group-append">
 						<div class="input-group-text">
-							<input type="radio" aria-label="Radio button for following text input" name="questao_correta" value="4">
+							<input type="radio" aria-label="Radio button for following text input" name="questao_correta" class="correto" value="4">
 						</div>
 					</div>
 				</div>
@@ -115,7 +127,7 @@ $row = mysqli_fetch_array($results);
 					<input class="form-control" id="alt5" name="alt5" rows="1" max="100"  value="<?php echo htmlspecialchars($row['alt5']); ?>"></input>
 					<div class="input-group-append">
 						<div class="input-group-text">
-							<input type="radio" aria-label="Radio button for following text input" name="questao_correta" value="5">
+							<input type="radio" aria-label="Radio button for following text input" name="questao_correta" class="correto" value="5">
 						</div>
 					</div>
 				</div>

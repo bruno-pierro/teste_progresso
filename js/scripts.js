@@ -221,6 +221,7 @@ function edit(id) {
 		data:{'edit_id':edit_id},
 		success:function(html) {
 			location.href="edit.php?id_edicao="+edit_id+"";
+			// console.log(edit_id);
 		}
 
 	});
