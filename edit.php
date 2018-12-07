@@ -37,6 +37,9 @@ $row = mysqli_fetch_array($results);
 		<input type="" class="correto_edit" style="display:none" value="<?php echo htmlspecialchars($row['alt_correta']); ?>">
 		<script type="text/javascript">
 			$( document ).ready(function() {
+				if ($('#alt1').val() == '-') {
+					$('.edit_alternativa').css('display','none');
+				}
 				if ($('#alt1').val() != '-') {
 					var correto = $('.correto_edit').val() -1;
 					$('.correto').eq(correto).attr('checked',true);					
@@ -75,59 +78,61 @@ $row = mysqli_fetch_array($results);
 					<input  style="display: none" id="base64" name="imgConvertida"></input>
 				</div>
 
-				<div class="alert alert-info alert-dismissible fade show" role="alert">
-					Ao inserir todas as questões, cheque qual delas é a correta usando o círculo do lado direito do campo.
-					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-
-				<label for="alt1"><h5>Alternativa 1:</h5> </label>
-				<div class="form-group input-group">
-					<input class="form-control" id="alt1" name="alt1"  rows="1" max="100" value="<?php echo htmlspecialchars($row['alt1']); ?>"></input>
-					<div class="input-group-append">
-						<div class="input-group-text">
-							<input type="radio" aria-label="Radio button for following text input" name="questao_correta" class="correto" value="1">
+				<div class="edit_alternativa">
+					
+					<div class="alert alert-info alert-dismissible fade show" role="alert">
+						Ao inserir todas as questões, cheque qual delas é a correta usando o círculo do lado direito do campo.
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<label for="alt1"><h5>Alternativa 1:</h5> </label>
+					<div class="form-group input-group">
+						<input class="form-control" id="alt1" name="alt1"  rows="1" max="100" value="<?php echo htmlspecialchars($row['alt1']); ?>"></input>
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<input type="radio" aria-label="Radio button for following text input" name="questao_correta" class="correto" value="1">
+							</div>
 						</div>
 					</div>
-				</div>
 
-				<label for="alt2"><h5>Alternativa 2:</h5> </label>
-				<div class="form-group input-group">
-					<input class="form-control" id="alt2" name="alt2" rows="1" max="100"  value="<?php echo htmlspecialchars($row['alt2']); ?>"></input>
-					<div class="input-group-append">
-						<div class="input-group-text">
-							<input type="radio" aria-label="Radio button for following text input" name="questao_correta" class="correto" value="2">
+					<label for="alt2"><h5>Alternativa 2:</h5> </label>
+					<div class="form-group input-group">
+						<input class="form-control" id="alt2" name="alt2" rows="1" max="100"  value="<?php echo htmlspecialchars($row['alt2']); ?>"></input>
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<input type="radio" aria-label="Radio button for following text input" name="questao_correta" class="correto" value="2">
+							</div>
 						</div>
 					</div>
-				</div>
 
-				<label for="alt3"><h5>Alternativa 3:</h5> </label>
-				<div class="form-group input-group">
-					<input class="form-control" id="alt3" name="alt3" rows="1" max="100"  value="<?php echo htmlspecialchars($row['alt3']); ?>"></input>
-					<div class="input-group-append">
-						<div class="input-group-text">
-							<input type="radio" aria-label="Radio button for following text input" name="questao_correta" class="correto" value="3">
+					<label for="alt3"><h5>Alternativa 3:</h5> </label>
+					<div class="form-group input-group">
+						<input class="form-control" id="alt3" name="alt3" rows="1" max="100"  value="<?php echo htmlspecialchars($row['alt3']); ?>"></input>
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<input type="radio" aria-label="Radio button for following text input" name="questao_correta" class="correto" value="3">
+							</div>
 						</div>
 					</div>
-				</div>
 
-				<label for="alt4"><h5>Alternativa 4:</h5> </label>
-				<div class="form-group input-group">
-					<input class="form-control" id="alt4" name="alt4" rows="1" max="100"  value="<?php echo htmlspecialchars($row['alt4']); ?>"></input>
-					<div class="input-group-append">
-						<div class="input-group-text">
-							<input type="radio" aria-label="Radio button for following text input" name="questao_correta" class="correto" value="4">
+					<label for="alt4"><h5>Alternativa 4:</h5> </label>
+					<div class="form-group input-group">
+						<input class="form-control" id="alt4" name="alt4" rows="1" max="100"  value="<?php echo htmlspecialchars($row['alt4']); ?>"></input>
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<input type="radio" aria-label="Radio button for following text input" name="questao_correta" class="correto" value="4">
+							</div>
 						</div>
 					</div>
-				</div>
 
-				<label for="alt5"><h5>Alternativa 5:</h5> </label>
-				<div class="form-group input-group">
-					<input class="form-control" id="alt5" name="alt5" rows="1" max="100"  value="<?php echo htmlspecialchars($row['alt5']); ?>"></input>
-					<div class="input-group-append">
-						<div class="input-group-text">
-							<input type="radio" aria-label="Radio button for following text input" name="questao_correta" class="correto" value="5">
+					<label for="alt5"><h5>Alternativa 5:</h5> </label>
+					<div class="form-group input-group">
+						<input class="form-control" id="alt5" name="alt5" rows="1" max="100"  value="<?php echo htmlspecialchars($row['alt5']); ?>"></input>
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<input type="radio" aria-label="Radio button for following text input" name="questao_correta" class="correto" value="5">
+							</div>
 						</div>
 					</div>
 				</div>
