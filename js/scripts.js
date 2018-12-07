@@ -99,7 +99,7 @@ let controle = 0;
 
 			$('.ddlMaterias').each(function (index, item) {
 				
-				//var materia = $("#materias option:selected");
+				var materia = $("#materias option:selected");
 				
 				var ddlQuantidade = $($('.ddlQtd')[index]);
 
@@ -116,14 +116,31 @@ let controle = 0;
 
 			prova += ' ] } }';
 			
-			//console.log(prova);
 			
 			$.ajax({
 				method: "POST",
 				url: 'exportar_prova.php',
 				data: { "data": JSON.stringify(prova) },
 				success: function(html) {
-					$('form').append('<a href="prova-teste.pdf">PDF GERADO COM SUCESSO</a>');
+
+					// var elemento = '<a href="prova-teste.pdf" download style="display:none" class="prova_gerada">PDF GERADO COM SUCESSO</a>';
+					// $('form').append(elemento);
+					alert('PDF GERADO COM SUCESSO');
+
+					function download(filename) {
+						var element = document.createElement('a');
+						element.setAttribute('href', 'prova-teste.pdf');
+						element.setAttribute('download', filename);
+
+						element.style.display = 'none';
+						document.body.appendChild(element);
+
+						element.click();
+
+						document.body.removeChild(element);
+					}
+					download('prova-teste.pdf');
+
 					$('.bt_gerasamba').attr('disabled',false);
 					$('.bt_gerasamba').html("Gerar Prova")
 				}
