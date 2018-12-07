@@ -1,9 +1,20 @@
+document.onkeypress = function (e) {
+   	if ($('#passwordForm .fa-check').length == 5) {
+		$('.bt_altera').css('display','block');
+	}else{
+		$('.bt_altera').css('display','none');
+	}
+	console.log('etapipoco')
+};
+
 $("input[type=password]").keyup(function(){
-    var ucase = new RegExp("[A-Z]+");
+
+
+	var ucase = new RegExp("[A-Z]+");
 	var lcase = new RegExp("[a-z]+");
 	var num = new RegExp("[0-9]+");
 	
-	if($("#password1").val().length >= 8){
+	if($("#password1").val().length == 8){
 		$("#8char").removeClass("fas fa-times");
 		$("#8char").addClass("fas fa-check");
 		$("#8char").css("color","#00A41E");
@@ -52,4 +63,6 @@ $("input[type=password]").keyup(function(){
 		$("#pwmatch").addClass("fas fa-times");
 		$("#pwmatch").css("color","#FF0004");
 	}
+
+
 });
