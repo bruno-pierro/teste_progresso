@@ -16,6 +16,8 @@ let controle = 0;
 		// }
 		if($('.monta'+x+' select').val() == null ||$('.monta'+x+' input:first').val() == "" || $('.monta'+x+' input:last').val() == ""){
 			$('.monta'+x+':last').after('<tr class="alert alert-danger alert-dismissible fade show" role="alert"><th colspan="4"><center><strong>OPS!</strong> Preencha todos os campos!<button type="button" class="close" data-dismiss="alert" aria-label="Close">    <span aria-hidden="true">&times;</span></button></th></center></tr>')
+		}else if($('.monta'+x+' input:first').val() > 10){
+			$('.monta'+x+':last').after('<tr class="alert alert-danger alert-dismissible fade show" role="alert"><th colspan="4"><center><strong>OPS!</strong> Número máximo de questões excedido: MAX 10<button type="button" class="close" data-dismiss="alert" aria-label="Close">    <span aria-hidden="true">&times;</span></button></th></center></tr>')
 		}else{
 			var q_id = 0;
 			// var inputQuestao = $('.questao1').eq(0).val();

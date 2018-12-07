@@ -66,8 +66,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 			var materia_escolhida = $('.seletor_materia').val().substring(8,10);
 
 	
-			$('.form_questao').append('<input type="hidden" name="area_conhecimento" value="'+area_conhecimento+'">');
-			$('.form_questao').append('<input type="hidden" name="materia_escolhida" value="'+materia_escolhida+'">');
+			$('.form_questao').append('<input type="hidden" name="area_conhecimento" value="'+area_conhecimento+'" required>');
+			$('.form_questao').append('<input type="hidden" name="materia_escolhida" value="'+materia_escolhida+'" required>');
 
 
 
@@ -188,17 +188,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 						<legend class="legenda">Selecione a dificuldade da questão:</legend>
 
 						<div class="radio">
-							<input type="radio" id="facil" name="dificuldade" value="1" />
+							<input type="radio" id="facil" name="dificuldade" value="1" required/>
 							<label for="facil">Facil</label>
 						</div>
 
 						<div class="radio">
-							<input type="radio" id="medio" name="dificuldade" value="2" />
+							<input type="radio" id="medio" name="dificuldade" value="2" required/>
 							<label for="medio">Médio</label>
 						</div>
 
 						<div class="radio">
-							<input type="radio" id="dificil" name="dificuldade" value="3" />
+							<input type="radio" id="dificil" name="dificuldade" value="3" required />
 							<label for="dificil">Difícil</label>
 						</div>
 					</fieldset>
@@ -226,50 +226,50 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 				<label for="alt1"><h5>Alternativa 1:</h5> </label>
 				<div class="form-group input-group">
-					<input class="form-control" id="alt1" name="alt1"  rows="1" max="100"></input>
+					<input class="form-control" id="alt1" name="alt1"  rows="1" max="100" required></input>
 					<div class="input-group-append">
 						<div class="input-group-text">
-							<input type="radio" aria-label="Radio button for following text input" name="questao_correta" value="1">
+							<input type="radio" aria-label="Radio button for following text input" name="questao_correta" required value="1">
 						</div>
 					</div>
 				</div>
 
 				<label for="alt2"><h5>Alternativa 2:</h5> </label>
 				<div class="form-group input-group">
-					<input class="form-control" id="alt2" name="alt2" rows="1" max="100"></input>
+					<input class="form-control" id="alt2" name="alt2" rows="1" max="100" required></input>
 					<div class="input-group-append">
 						<div class="input-group-text">
-							<input type="radio" aria-label="Radio button for following text input" name="questao_correta" value="2">
+							<input type="radio" aria-label="Radio button for following text input" name="questao_correta" required value="2">
 						</div>
 					</div>
 				</div>
 
 				<label for="alt3"><h5>Alternativa 3:</h5> </label>
 				<div class="form-group input-group">
-					<input class="form-control" id="alt3" name="alt3" rows="1" max="100"></input>
+					<input class="form-control" id="alt3" name="alt3" rows="1" max="100" required></input>
 					<div class="input-group-append">
 						<div class="input-group-text">
-							<input type="radio" aria-label="Radio button for following text input" name="questao_correta" value="3">
+							<input type="radio" aria-label="Radio button for following text input" name="questao_correta" required value="3">
 						</div>
 					</div>
 				</div>
 
 				<label for="alt4"><h5>Alternativa 4:</h5> </label>
 				<div class="form-group input-group">
-					<input class="form-control" id="alt4" name="alt4" rows="1" max="100"></input>
+					<input class="form-control" id="alt4" name="alt4" rows="1" max="100" required></input>
 					<div class="input-group-append">
 						<div class="input-group-text">
-							<input type="radio" aria-label="Radio button for following text input" name="questao_correta" value="4">
+							<input type="radio" aria-label="Radio button for following text input" name="questao_correta" required value="4">
 						</div>
 					</div>
 				</div>
 
 				<label for="alt5"><h5>Alternativa 5:</h5> </label>
 				<div class="form-group input-group">
-					<input class="form-control" id="alt5" name="alt5" rows="1" max="100"></input>
+					<input class="form-control" id="alt5" name="alt5" rows="1" max="100" required></input>
 					<div class="input-group-append">
 						<div class="input-group-text">
-							<input type="radio" aria-label="Radio button for following text input" name="questao_correta" value="5">
+							<input type="radio" aria-label="Radio button for following text input" name="questao_correta" required value="5">
 						</div>
 					</div>
 				</div>
@@ -296,7 +296,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 			<form action = "professor_2.php" method = "POST" class="form_questao">
 				<div class="form-group">
 					<label for="pergunta"><h5>Digite a questão:</h5> </label>
-					<textarea class="form-control" id="pergunta" name="pergunta" rows="3" style="resize: none;"></textarea>
+					<textarea class="form-control" id="pergunta" name="pergunta" rows="3" style="resize: none;" required></textarea>
 				</div>
 				<div class="form-group">
 					<label><h5>Suba uma imagem que ilustre a questão (opcional):</h5></label>
@@ -316,7 +316,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 						<legend class="legenda">Selecione a dificuldade da questão:</legend>
 
 						<div class="radio">
-							<input type="radio" id="facil" name="dificuldade" value="1"/>
+							<input type="radio" id="facil" name="dificuldade" value="1" required/>
 							<label for="facil">Facil</label>
 						</div>
 

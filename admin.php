@@ -26,28 +26,24 @@
 		$login_edicao = $_SESSION['username'];
 		$psw = mysqli_real_escape_string($db,$_POST['password1']);
 
-		if ($psw == '' || sizeof($psw) < 8) {
-			echo '<script language="javascript" type="text/javascript"> 
-			alert("A senha não obedece os critérios estabelecidos");
-			</script>';
-		}else{
-			$sql = " UPDATE table_login SET senha='$psw' where id='$login_edicao'";
-			$results = mysqli_query($db,$sql);
+		
+		$sql = " UPDATE table_login SET senha='$psw' where id='$login_edicao'";
+		$results = mysqli_query($db,$sql);
 
-			if(mysqli_query($db,$sql))
-			{
-				echo '<script language="javascript" type="text/javascript"> 
-				alert("Senha Alterada! '.$psw.'");
-				</script>';
-			}
-			else
-			{
-				echo '<script language="javascript" type="text/javascript"> 
-				alert("Ocorreu um erro!");
-				window.location = "admin.php";
-				</script>';
-			}
+		if(mysqli_query($db,$sql))
+		{
+			echo '<script language="javascript" type="text/javascript"> 
+			alert("Senha Alterada! '.$psw.'");
+			</script>';
 		}
+		else
+		{
+			echo '<script language="javascript" type="text/javascript"> 
+			alert("Ocorreu um erro!");
+			window.location = "admin.php";
+			</script>';
+		}
+		
 
 		
 	}
@@ -109,7 +105,7 @@
 									<h5 class="card-title">Use o formulário abaixo para alterar sua senha</h5>
 									<p class="card-text">
 										<form method="post" action="admin.php" id="passwordForm">
-											<input type="password" class="input-lg form-control" name="password1" id="password1" maxlength="8" placeholder="Nova senha" autocomplete="off">
+											<input type="password" class="input-lg form-control" name="password1" id="password1" maxlength="8" placeholder="Nova senha" autocomplete="off" required>
 											<div class="row">
 												<div class="col-sm-6">
 													<span id="8char" class="fas fa-times" style="color:#FF0004;"></span> 8 caracteres.<br>
@@ -120,7 +116,7 @@
 													<span id="num" class="fas fa-times" style="color:#FF0004;"></span> Um número.
 												</div>
 											</div><br>
-											<input type="password" class="input-lg form-control" name="password2" id="password2" maxlength="8" placeholder="Repita a senha" autocomplete="off">
+											<input type="password" class="input-lg form-control" name="password2" id="password2" maxlength="8" placeholder="Repita a senha" autocomplete="off" required>
 											<div class="row">
 												<div class="col-sm-12">
 													<span id="pwmatch" class="fas fa-times" style="color:#FF0004;"></span> Senhas são iguais.
