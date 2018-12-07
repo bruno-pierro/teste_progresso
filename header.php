@@ -25,5 +25,6 @@ if(!isset($_SESSION['login']))
 					<img src="img/Laureate_International_Universities_Logo.png" height="40px;" width="150px;">
 				</td>
 			</tr>
-		</tbody></table>
-	</div>
+		</tbody>
+	</table>
+</div>

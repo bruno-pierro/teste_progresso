@@ -47,7 +47,7 @@
 						</tbody>
 						<tfoot>
 							<tr>
-								<th><button type="button" class="btn btn-secondary" onclick="gera()">Gerar Prova</button></th>
+								<th><button type="button" class="btn btn-secondary bt_gerasamba"  onclick="gera()">Gerar Prova</button></th>
 								<th class="contador" colspan="3">Quantidade de questões: 0</th>
 							</tr>
 						</tfoot>

@@ -93,7 +93,8 @@ let controle = 0;
 			alert('Não foi inserida a quantidade total de questões para a prova! \nTente Novamente\n\nTotal de questões inseridas: '+valFinal+'');
 		}
 		else {
-
+			$('.bt_gerasamba').attr('disabled',true);
+			$('.bt_gerasamba').html("<i class='fa fa-spinner fa-spin '></i> Gerando a prova")
 			var prova = '{ "prova": { "questoes": [';
 
 			$('.ddlMaterias').each(function (index, item) {
@@ -126,6 +127,8 @@ let controle = 0;
 				data: { "data": JSON.stringify(prova) },
 				success: function(html) {
 					$('form').append('<a href="prova-teste.pdf">PDF GERADO COM SUCESSO</a>');
+					$('.bt_gerasamba').attr('disabled',false);
+					$('.bt_gerasamba').html("Gerar Prova")
 				}
 
 			});
