@@ -99,8 +99,7 @@ let controle = 0;
 
 			$('.ddlMaterias').each(function (index, item) {
 				
-				var materia = $("#materias option:selected");
-				
+				var materia = $(this).val();				
 				var ddlQuantidade = $($('.ddlQtd')[index]);
 
 				
@@ -116,7 +115,7 @@ let controle = 0;
 
 			prova += ' ] } }';
 			
-			
+			console.log(prova);
 			$.ajax({
 				method: "POST",
 				url: 'exportar_prova.php',

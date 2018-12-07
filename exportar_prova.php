@@ -82,9 +82,7 @@ curl_setopt_array($curl, array(
 ));
 $response = curl_exec($curl);
 file_put_contents('prova-teste.pdf', $response);
+file_put_contents('teste.php', $response);
 file_put_contents('teste2.php', $content);
 file_put_contents('post2.json', $json);
-
-
-
 ?>
