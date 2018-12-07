@@ -14,7 +14,7 @@ let controle = 0;
 		// if($('.questao1:last').eq(0).val() == "" || $('.questao1:last').eq(1).val() == "" || $('.questao1:last').eq(2).val() == ""){
 		// 	$('.monta'+x+':last').after('<tr class="alert alert-danger alert-dismissible fade show" role="alert"><th colspan="4"><center><strong>OPS!</strong> Preencha todos os campos!<button type="button" class="close" data-dismiss="alert" aria-label="Close">    <span aria-hidden="true">&times;</span></button></th></center></tr>')
 		// }
-		if($('.monta'+x+' select').val() == null ||$('.monta'+x+' input:first').val() == "" || $('.monta'+x+' input:last').val() == ""){
+		if($('.monta'+x+' select').val() == null ||$('.monta'+x+' input:first').val() == "" || $('.monta'+x+' select:last').val() == null){
 			$('.monta'+x+':last').after('<tr class="alert alert-danger alert-dismissible fade show" role="alert"><th colspan="4"><center><strong>OPS!</strong> Preencha todos os campos!<button type="button" class="close" data-dismiss="alert" aria-label="Close">    <span aria-hidden="true">&times;</span></button></th></center></tr>')
 		}else if($('.monta'+x+' input:first').val() > 10){
 			$('.monta'+x+':last').after('<tr class="alert alert-danger alert-dismissible fade show" role="alert"><th colspan="4"><center><strong>OPS!</strong> Número máximo de questões excedido: MAX 10<button type="button" class="close" data-dismiss="alert" aria-label="Close">    <span aria-hidden="true">&times;</span></button></th></center></tr>')
@@ -99,20 +99,17 @@ let controle = 0;
 
 			$('.ddlMaterias').each(function (index, item) {
 				
-				var materia = $(this).val();
 				//var materia = $("#materias option:selected");
 				
 				var ddlQuantidade = $($('.ddlQtd')[index]);
 
-				//console.log(ddlQuantidade);
 				
 				var qtd = $(ddlQuantidade).val()
 
-				var ddlDificuldade = $($('.ddlDificuldade')[index]);
+				var ddlDificuldade = $($('.ddlDificuldade')[index]).val();
 				
-				var dificuldade = $(ddlDificuldade).val()
 
-				prova += '{ "materia": "' + materia + '", "qtd": ' + qtd + ', "dificuldade": "' + dificuldade + '" }' 
+				prova += '{ "materia": "' + materia + '", "qtd": ' + qtd + ', "dificuldade": "' + ddlDificuldade + '" }' 
 				+ (index + 1 != $('.ddlMaterias').length ? "," : "");
 
 			});

@@ -41,7 +41,13 @@
 									</select>
 								</th>
 								<th><input type="number" min="1" max="10" name="quantidade1" class="questao1 ddlQtd" style="width:100%"></th>
-								<th><input type="number" min="1" max="3" name="dificuldade" class="questao1 ddlDificuldade" style="width:100%"></th>
+								<!-- <th><input type="number" min="1" max="3" name="dificuldade" class="questao1 ddlDificuldade" style="width:100%"></th> -->
+								<th><select name="dificuldade" class="questao1 ddlDificuldade" style="width:100%">
+									<option disabled selected value> -- Selecione a dificuldade -- </option>
+									<option value="1">Fácil</option>
+									<option value="2">Médio</option>
+									<option value="2">Difícil</option>
+								</select></th>
 								<th><button type="button" class="btn btn-secondary questao1 bt1" onclick="checa()">Inserir</button></th>
 							</tr>
 						</tbody>
