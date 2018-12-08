@@ -34,7 +34,7 @@
 				<tbody>
 					<?php 
 					include("config_questoes.php");
-					$query="SELECT questao, alt1,alt2,alt3,alt4,alt5,alt_correta,id, img FROM table_questoes";
+					$query="SELECT questao, alt1,alt2,alt3,alt4,alt5,alt_correta,id, img FROM table_questoes order by id desc";
 					$results = mysqli_query($db,$query);
 
 					while ($row = mysqli_fetch_array($results)) {
