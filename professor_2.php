@@ -51,10 +51,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
 
 	<meta charset="UTF-8">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script src="js/bootstrap.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/professor.css">
 	<title></title>
 	<script type="text/javascript">
@@ -65,7 +65,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 			var area_conhecimento = $('.seletor_inicio').val();
 			var materia_escolhida = $('.seletor_materia').val().substring(8,10);
 
-	
+
 			$('.form_questao').append('<input type="hidden" name="area_conhecimento" value="'+area_conhecimento+'" required>');
 			$('.form_questao').append('<input type="hidden" name="materia_escolhida" value="'+materia_escolhida+'" required>');
 
@@ -74,7 +74,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 			$('#seletor_area').css("display","none");
 			$('#seletor_tipo').css("display","block");
 			$('#seletor_materia').css("display","none");
-		
+
 
 			
 		}
@@ -90,6 +90,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 			}
 		}
 
+		$( document ).ready(function() {
+			document.getElementById("imgInp").addEventListener("change", converte);
+		});
 
 
 	</script>
