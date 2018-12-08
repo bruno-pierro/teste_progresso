@@ -84,9 +84,16 @@
 							<div class="card-body">
 								<p class="card-text">
 									<?php 
-									echo "Usuário: ", $_SESSION['username'], "<br />";
-									echo "Curso(s): ", $_SESSION['curso'], "<br />";
-									echo "Cargo: ", ucwords($_SESSION['cargo']), "<br /><br>";
+									if ($_SESSION['cargo'] == 'coordenador') {
+										echo "Usuário: ", $_SESSION['username'], "<br />";
+										echo "Curso(s): o usuário tem acesso a todos os cursos<br />";
+										echo "Cargo: ", ucwords($_SESSION['cargo']), "<br /><br>";
+									}else{
+										
+										echo "Usuário: ", $_SESSION['username'], "<br />";
+										echo "Curso(s): ", $_SESSION['curso'], "<br />";
+										echo "Cargo: ", ucwords($_SESSION['cargo']), "<br /><br>";
+									}
 
 									?>
 								</p>
