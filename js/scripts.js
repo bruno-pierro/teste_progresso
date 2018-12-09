@@ -142,6 +142,21 @@ let controle = 0;
 					}
 					download('prova-teste.pdf');
 
+
+					function download2(filename) {
+						var element = document.createElement('a');
+						element.setAttribute('href', 'gabarito.pdf');
+						element.setAttribute('download', filename);
+
+						element.style.display = 'none';
+						document.body.appendChild(element);
+
+						element.click();
+
+						document.body.removeChild(element);
+					}
+					download2('gabarito.pdf');
+
 					$('.bt_gerasamba').attr('disabled',false);
 					$('.bt_gerasamba').html("Gerar Prova")
 				}
