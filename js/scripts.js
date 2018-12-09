@@ -140,7 +140,7 @@ let controle = 0;
 
 						document.body.removeChild(element);
 					}
-					download('prova-teste.pdf');
+					download('TESTE_PROGRESSO_A.pdf');
 
 
 					function download2(filename) {
@@ -155,7 +155,7 @@ let controle = 0;
 
 						document.body.removeChild(element);
 					}
-					download2('gabarito.pdf');
+					download2('GABARITO_A.pdf');
 
 					$('.bt_gerasamba').attr('disabled',false);
 					$('.bt_gerasamba').html("Gerar Prova")

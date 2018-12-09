@@ -11,31 +11,25 @@
         <p style="display: inline-flex"><span class="numero_questao"></span> 
             <span class="questao">
             <div>
-	<p>1: B</p>
+	<p>1: A</p>
 </div><div>
 	<p>2: A</p>
 </div><div>
 	<p>3: B</p>
 </div><div>
-	<p>4: A</p>
+	<p>4: B</p>
 </div><div>
-	<p>5: B</p>
+	<p>5: D</p>
 </div><div>
-	<p>6: A</p>
+	<p>6: D</p>
 </div><div>
-	<p>7: A</p>
+	<p>7: E</p>
 </div><div>
-	<p>8: A</p>
+	<p>8: E</p>
 </div><div>
 	<p>9: A</p>
 </div><div>
-	<p>10: D</p>
-</div><div>
-	<p>11: D</p>
-</div><div>
-	<p>12: C</p>
-</div><div>
-	<p>13: {alt_correta}</p>
+	<p>10: A</p>
 </div>
             </span>
         </p>
