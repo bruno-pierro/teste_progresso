@@ -33,12 +33,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
  if($count == 1 and $active2 == 'coordenador') {
 
   $_SESSION['login'] = time();
-  header("location: coord.php");
+  header("location: consulta_questoes.php");
 
 }else if($count == 1 and $active2 == 'professor'){
 
  $_SESSION['login'] = time();
- header("location: professor_2.php"); 
+ header("location: consulta_questoes.php"); 
 
 }
 else {
@@ -61,7 +61,7 @@ else {
 </head>
 <body style="background-color: #333;box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);">
   <div style = "margin:30px auto; width: 500px;" class="card">
-    <h3 class="text-center mb-4 h3 mb-3 font-weight-normal" style="margin-top: 1.5em;font-family: 'Titillium Web', sans-serif;color:#00B233">Prova Certa <i class="fas fa-check-double" style="color:#c13434;"></i></i></h3>
+    <img src="img/logo_prova.png" style="width: 74%;align-self: center;">
     <form action = "" method = "post" style="width: 65%;" class="col-centered  form-signin">
       <div class="form-label-grup">
 

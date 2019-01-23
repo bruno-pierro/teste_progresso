@@ -92,7 +92,8 @@
 										
 										echo "Usuário: ", $_SESSION['username'], "<br />";
 										echo "Curso(s): ", $_SESSION['curso'], "<br />";
-										echo "Cargo: ", ucwords($_SESSION['cargo']), "<br /><br>";
+										echo "Cargo: ", ucwords($_SESSION['cargo']), "<br />";
+										echo "Materias: ", ucwords($_SESSION['curso']), "<br /><br>";
 									}
 
 									?>

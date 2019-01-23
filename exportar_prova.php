@@ -110,7 +110,7 @@ for($i = 0;$i<sizeof($data);$i++){
     CURLOPT_URL => "https://api.pdfshift.io/v2/convert/",
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_POST => true,
-    CURLOPT_POSTFIELDS => json_encode(array("source" => $content, "landscape" => false, "use_print" => false, "sandbox" => true, "css" => "css/prova.css")),
+    CURLOPT_POSTFIELDS => json_encode(array("source" => $content, "landscape" => false, "use_print" => false,  "css" => "css/prova.css")),
     CURLOPT_HTTPHEADER => array('Content-Type:application/json'),
     CURLOPT_USERPWD => '291f581b35fb4d3f9e21039fc2d9858e'
   ));
@@ -121,7 +121,7 @@ for($i = 0;$i<sizeof($data);$i++){
     CURLOPT_URL => "https://api.pdfshift.io/v2/convert/",
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_POST => true,
-    CURLOPT_POSTFIELDS => json_encode(array("source" => $gabarito, "landscape" => false, "use_print" => false, "sandbox" => true, "css" => "css/prova.css")),
+    CURLOPT_POSTFIELDS => json_encode(array("source" => $gabarito, "landscape" => false, "use_print" => false,  "css" => "css/prova.css")),
     CURLOPT_HTTPHEADER => array('Content-Type:application/json'),
     CURLOPT_USERPWD => '291f581b35fb4d3f9e21039fc2d9858e'
   ));

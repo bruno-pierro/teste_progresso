@@ -34,7 +34,11 @@
 				<tbody>
 					<?php 
 					include("config_questoes.php");
-					$query="SELECT questao, alt1,alt2,alt3,alt4,alt5,alt_correta,id, img FROM table_questoes order by id desc";
+					$materia_lecionada = $_SESSION['curso'];
+					echo 'Você está vendo as questões de: '.$materia_lecionada.'<br><br>';	
+					//$query="SELECT questao, alt1,alt2,alt3,alt4,alt5,alt_correta,id, img FROM table_questoes order by id desc";
+					$query="SELECT  m.nome_materia,a.questao,a.alt1, a.alt2,a.alt3,a.alt4,a.alt5, a.alt_correta,a.id,a.img FROM bd_questoes.table_materia m LEFT JOIN bd_questoes.table_questoes a ON m.index_materia = a.materia 
+WHERE m.nome_materia LIKE '%".$materia_lecionada."%' ORDER BY a.id desc";
 					$results = mysqli_query($db,$query);
 
 					while ($row = mysqli_fetch_array($results)) {
